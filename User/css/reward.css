@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+}
+
+body{
+    background-image: url("../../Picture/Background/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+/* .textcenter{
+    color: white;
+    text-align:center; 
+}  */
+
+  /* .center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    padding: 10px;
+  } */

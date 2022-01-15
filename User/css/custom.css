@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+}
+
+body{
+    background-image: url("./Picture/Background/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.text{
+    color: white;
+}
+
+.btn-link{
+    color: white;
+}
+
+.logo {
+    margin-top: 10%;
+}
