@@ -6,7 +6,7 @@ if ($_POST['submit_login']) {
     $userphone = $_POST['userphone'];
     $password = $_POST['password'];
 
-    $q_search_user = "SELECT id_user,id_permission_user From user WHERE tel_user = '$userphone' AND password_user = '$password'";
+    $q_search_user = "SELECT id_user,id_permission_user From user WHERE phone_user = '$userphone' AND password_user = '$password'";
     $result_search = mysqli_query($dbcon, $q_search_user);
     $detail = mysqli_fetch_assoc($result_search);
     $count = mysqli_num_rows($result_search);

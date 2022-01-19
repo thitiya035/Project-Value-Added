@@ -1,47 +1,56 @@
 <?php
 require './User/models/profileUser.php';
+require './User/views/edit_profile_modal.php';
 ?>
 
-<div>
+<!-- <div>
     <nav class="nav justify-content-end">
         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#ModalCenter">
             <span class="fas fa-cog" style="color:black"></span>
         </button>
-</div>
+</div> -->
 <div class="container d-flex justify-content-center">
     <div class="circle-bg">
         <div class="">
-            <h1 class="display-1"><?php echo $row['total_point_user'] ?></h1>
+            <h1 class="display-1"><?php echo $detail_user['total_point_user'] ?></h1>
         </div>
         <div>
             <h1>Point</h1>
         </div>
     </div>
 </div>
-<div class="container bg-light">
-    <table class="table table-borderless">
-        <thead>
-            <tr>
-                <th>ข้อมูลส่วนตัว</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Name: </td>
-                <td class="col-10"><?php echo $row['name_user'] ?></td>
-            </tr>
-            <tr>
-                <td>Address: </td>
-                <td><?php echo $row['address_user'] ?></td>
-            </tr>
-            <tr>
-                <td>Phone: </td>
-                <td><?php echo $row['tel_user'] ?></td>
-            </tr>
 
-        </tbody>
-    </table>
+<div class="container card mt-3 shadow">
+    <div class="card-body">
+        <div class="col-12">
+            <div class="alert alert-dark text-center text-uppercase mb-3">
+                <h3>Information <button class="btn btn-secondary  btn-clipboard float-right " data-toggle="modal" data-target="#modal-user-edit-profile">Edit</button></h3>
+            </div>
+            <table class="table table-bordered ">
+                <tbody>
+                    <tr class="text-uppercase">
+                        <th scope="col">Name</th>
+                        <td><?php echo ($detail_user['firstname_user']) .'&nbsp;&nbsp;&nbsp;'. ($detail_user['lastname_user'] ); ?></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Address</th>
+                        <td><?php echo $detail_user['address_user']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>E-mail</th>
+                        <td><?php echo $detail_user['email_user']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>Tel</th>
+                        <td><?php echo $detail_user['phone_user']; ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
+
 <footer class="page-footer">
     <div>
         <div class="text-center d-flex " style="background-color: rgba(0, 0, 0, 0.2);">
