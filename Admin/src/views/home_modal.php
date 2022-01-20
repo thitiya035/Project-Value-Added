@@ -9,11 +9,11 @@
     <?php
     require_once './src/models/update_stock.php';
     ?>
-    <h1 class="badge badge-warning" style="font-size: 1.25em;">Detail</h1>
+    <!-- <h1 class="badge bg-secondary" style="font-size: 1.25em;">Detail</h1> -->
     <div class="row text-center">
         <div class="col-4 mx-auto">
             <div class="card shadow rounded">
-                <div class="card-header">
+                <div class="card-header bg-secondary">
                     <strong>Clear plastic bottles</strong>
                 </div>
                 <div class="card-body">
@@ -23,7 +23,7 @@
         </div>
         <div class="col-4 mx-auto">
             <div class="card shadow rounded">
-                <div class="card-header">
+                <div class="card-header bg-secondary">
                     <strong>Opaque plastic bottles</strong>
                 </div>
                 <div class="card-body">
@@ -32,8 +32,8 @@
             </div>
         </div>
         <div class="col-4 mx-auto">
-            <div class="card shadow rounded">
-                <div class="card-header">
+            <div class="card shadow rounded ">
+                <div class="card-header bg-secondary">
                     <strong>Cans</strong>
                 </div>
                 <div class="card-body">
@@ -47,17 +47,17 @@
     <div class="row text-center">
         <div class="col-4 mx-auto">
             <div class="card shadow rounded">
-                <div class="card-header">
+                <div class="card-header bg-secondary">
                     <strong>TOP POINT</strong>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-left">
                    <?php include './src/views/show_point.php' ?>
                 </div>
             </div>
         </div>
         <div class="col-4 mx-auto">
             <div class="card shadow rounded">
-                <div class="card-header">
+                <div class="card-header bg-secondary">
                     <strong>TOP POINT OF TO DAY</strong>
                 </div>
                 <div class="card-body">
@@ -67,7 +67,7 @@
         </div>
         <div class="col-4 mx-auto">
             <div class="card shadow rounded">
-                <div class="card-header">
+                <div class="card-header bg-secondary">
                     <strong>TOP POINT OF MOUTH</strong>
                 </div>
                 <div class="card-body">

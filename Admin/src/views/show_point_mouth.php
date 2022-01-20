@@ -5,7 +5,7 @@
 //     echo 'NO POINT';
 // }
 if (!mysqli_fetch_object($result_fetch_topToDay)) {
-  echo 'NO MOVEMENT';
+  echo 'NOT MOVEMENT';
 }
 while ($lists_user_mouth = mysqli_fetch_assoc($result_fetch_topToMouth)) { ?>
   <p>
