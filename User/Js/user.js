@@ -1,4 +1,8 @@
-$(".img-fu").ready(function () {
+$("textarea").each(function () {
+  this.setAttribute("style", "px;overflow-y:hidden");
+});
+
+$(".img-fu").each(function () {
   function myFunction(x) {
     if (x.matches) {
       // If media query matches
@@ -27,7 +31,7 @@ $(document).ready(function () {
       },
       dataType: "json",
       success: function (remine) {
-        console.log(remine);
+        // console.log(remine);
         if (remine.status == "success") {
           if (remine.permission == "admin") {
             window.location = "./Admin/home.php";
@@ -44,6 +48,97 @@ $(document).ready(function () {
             icon: remine.icon,
           });
         }
+      },
+    });
+  });
+
+  $(".register").click(function () {
+    var firstname = $(".firstname").val();
+    var lastname = $(".lastname").val();
+    var email = $(".email").val();
+    var phone = $(".phone").val();
+    var password = $(".repassword").val();
+    var con_password = $(".con_repassword").val();
+    // console.log("firstname is " + firstname + "  lastname is " + lastname);
+    // console.log("  Email is " + email + "  Phone is " + phone);
+    // console.log(
+    //   "  password is " + password + "  con_password is " + con_password
+    // );
+
+    $.ajax({
+      type: "POST",
+      url: "./User/models/register.php",
+      data: {
+        submit_register: true,
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        phone: phone,
+        password: password,
+        con_password: con_password,
+      },
+      dataType: "json",
+      success: function (remine) {
+        if (remine.status == "success") {
+          console.log("session is " + remine.session);
+          swal({
+            title: remine.title,
+            text: remine.text,
+            icon: remine.icon,
+          });
+          // window.location = "profile.php";
+        } else if (remine.status == "fail") {
+          swal({
+            title: remine.title,
+            text: remine.text,
+            icon: remine.icon,
+          });
+        } else if (remine.status == "have_phone") {
+          swal({
+            title: remine.title,
+            text: remine.text,
+            icon: remine.icon,
+          });
+        } else if (remine.status == "password_notequal") {
+          swal({
+            title: remine.title,
+            text: remine.text,
+            icon: remine.icon,
+          });
+        }
+      },
+    });
+  });
+
+  $(".edit_user").click(function () {
+    var firstname = $(".firstname").val();
+    var lastname = $(".lastname").val();
+    var email = $(".email").val();
+    var address = $(".address").val();
+
+    // console.log("firstname is " + firstname + "  lastname is " + lastname);
+    // console.log("  Email is " + email + "  address is " + address);
+    $.ajax({
+      type: "POST",
+      url: "./User/models/edit_profile.php",
+      data: {
+        submit_edit_user: true,
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        address: address,
+      },
+      dataType: "json",
+      success: function (remine) {
+        swal({
+          title: remine.title,
+          text: remine.text,
+          icon: remine.icon,
+        }).then((confirm) => {
+          // if(confirm){
+          location.reload();
+          // }
+        });
       },
     });
   });
