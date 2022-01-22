@@ -1,6 +1,5 @@
 <?php
 include './src/models/reward.php';
-include './src/views/reward_add_modal.php';
 ?>
 
 <div class="container pt-4">
@@ -35,8 +34,8 @@ include './src/views/reward_add_modal.php';
                             <td scope="row"><?php echo $lists_reward['point_exchange_reward']; ?></td>
                             <!-- <td scope="row"></td> -->
                             <td scope="row ">
-                                <button class="btn btn-info btn_edit_reward" id="<?php echo $lists_reward['id_reward']; ?>">Edit</button>
-                                <button class="btn btn-danger btn_delete_reward" id="<?php echo $lists_reward['id_reward']; ?>">Delete</button>
+                                <button class="btn btn-info reward_edit_modal" id="<?php echo $lists_reward['id_reward']; ?>">Edit</button>
+                                <button class="btn btn-danger reward_delete"  id="<?php echo $lists_reward['id_reward']; ?>">Delete</button>
                             </td>
                         </tr>
                     <?php } ?>
