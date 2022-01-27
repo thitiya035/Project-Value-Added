@@ -51,7 +51,7 @@ if ($_POST['submit_register']) {
         }
     } else {
         $remine = [
-            "status" => "password_notequal",
+            "status" => "password_notequal",    
             "title" => "Warning!",
             "text" => "Password did not match. Please try again.",
             "icon" => "warning"
