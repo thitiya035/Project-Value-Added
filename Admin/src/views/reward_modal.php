@@ -1,5 +1,5 @@
 <?php
-include './src/models/reward.php';
+require './src/models/reward.php';
 ?>
 
 <div class="container pt-4">
@@ -21,7 +21,6 @@ include './src/models/reward.php';
                         <th scope="col">No</th>
                         <th scope="col">Name of reward</th>
                         <th scope="col">Point of exchange</th>
-                        <!-- <th scope="col">Number of exchange</th> -->
                         <th scope="col">Setting</th>
 
                     </tr>
@@ -32,7 +31,6 @@ include './src/models/reward.php';
                             <td scope="row"><?php echo $lists_reward['id_reward']; ?></td>
                             <td scope="row"><?php echo $lists_reward['name_reward']; ?></td>
                             <td scope="row"><?php echo $lists_reward['point_exchange_reward']; ?></td>
-                            <!-- <td scope="row"></td> -->
                             <td scope="row ">
                                 <button class="btn btn-info reward_edit_modal" id="<?php echo $lists_reward['id_reward']; ?>">Edit</button>
                                 <button class="btn btn-danger reward_delete"  id="<?php echo $lists_reward['id_reward']; ?>">Delete</button>

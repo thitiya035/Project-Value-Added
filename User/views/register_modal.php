@@ -74,7 +74,7 @@
                                         <i class="fas fa-lock"></i>
                                     </span>
                                 </div>
-                                <input type="password" class="form-control con_password" name="con_password" placeholder="Confirm Password" aria-label="Password">
+                                <input type="password" class="form-control con_repassword" name="con_repassword" placeholder="Confirm Password" aria-label="Password">
                             </div>
                         </div>
                     </div>

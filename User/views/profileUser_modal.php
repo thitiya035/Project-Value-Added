@@ -11,10 +11,10 @@ require './User/views/edit_profile_modal.php';
 </div> -->
 <div class="container d-flex justify-content-center">
     <div class="circle-bg">
-        <div class="h1" style="font-size: 4.5rem;">
+        <div class="h1" style="font-size: 4rem;">
             <?php echo $detail_user['total_point_user'] ?> 
         </div>
-        <h2>Point</h2>
+        <h2  style="font-size: 2rem;" >Point</h2>
     </div>
 </div>
 
