@@ -1,5 +1,5 @@
 <?php
-require './src/models/member.php';
+require './src/models/member_fetch.php';
 ?>
 
 <div class="container pt-4">

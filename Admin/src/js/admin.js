@@ -105,4 +105,39 @@ $(document).ready(function () {
       }
     });
   });
+  $(".member_add").click(function () {
+    var firstname = $(".firstname").val();
+    var lastname = $(".lastname").val();
+    var email = $(".email").val();
+    var address = $(".address").val();
+    var phone = $(".phone").val();
+    var password = $(".password").val();
+    var con_password = $(".con_password").val();
+    $.ajax({
+      type: "POST",
+      url: "./src/models/member.php",
+      data: {
+        path_member: "member_add",
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        address: address,
+        phone: phone,
+        password: password,
+        con_password: con_password,
+      },
+      dataType: "json",
+      success: function (remine) {
+        swal({
+          title: remine.title,
+          text: remine.text,
+          icon: remine.icon,
+        }).then(() => {
+          if (remine.status == "success") {
+            location.reload();
+          }
+        });
+      },
+    });
+  });
 });
