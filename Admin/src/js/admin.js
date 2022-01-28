@@ -75,7 +75,8 @@ $(document).ready(function () {
     });
   });
   $(".reward_delete").click(function () {
-    id_reward = $(this).attr("id");
+    //  id_reward = $(this).attr("id");
+    var id_reward = $(this).attr("id");
     swal({
       title: "Are you sure ?!",
       text: "You want confirmation to delete the data ?",
@@ -99,6 +100,76 @@ $(document).ready(function () {
               icon: remine.icon,
             }).then(() => {
               location.reload();
+            });
+          },
+        });
+      }
+    });
+  });
+  $(".member_add").click(function () {
+    var firstname = $(".firstname").val();
+    var lastname = $(".lastname").val();
+    var email = $(".email").val();
+    var address = $(".address").val();
+    var phone = $(".phone").val();
+    var password = $(".password").val();
+    var con_password = $(".con_password").val();
+    var id_permission = $(".id_permission").val();
+    $.ajax({
+      type: "POST",
+      url: "./src/models/member.php",
+      data: {
+        path_member: "member_add",
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        address: address,
+        phone: phone,
+        password: password,
+        con_password: con_password,
+        id_permission: id_permission,
+      },
+      dataType: "json",
+      success: function (remine) {
+        swal({
+          title: remine.title,
+          text: remine.text,
+          icon: remine.icon,
+        }).then(() => {
+          if (remine.status == "success") {
+            location.reload();
+          }
+        });
+      },
+    });
+  });
+  $(".member_delete").click(function () {
+    var id_user = $(this).attr("id");
+    swal({
+      title: "Are you sure ?!",
+      icon: "warning",
+      text: "You want confirmation to delete this user ?",
+      buttons: true,
+      dangerMode: true,
+    }).then((confirm) => {
+      if (confirm) {
+        $.ajax({
+          type: "POST",
+          url: "./src/models/member.php",
+          data: {
+            path_member: "member_delete",
+            id_user: id_user,
+          },
+          dataType: "json",
+          success: function (remine) {
+            swal({
+              title: remine.title,
+              text: remine.text,
+              icon: remine.icon,
+            }).then(() => {
+              if (remine.status == "success") {
+                location.reload();
+              }
             });
           },
         });

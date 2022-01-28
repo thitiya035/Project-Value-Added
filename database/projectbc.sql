@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2022 at 04:43 PM
+-- Generation Time: Jan 28, 2022 at 04:58 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -157,7 +157,8 @@ INSERT INTO `product` (`id_product`, `id_barcode_product`, `name_product`, `name
 (1, '8854698005043', 'ชาเขียวรสน้ำผึ้งผสมมะนาว', 'GreenTea Honey Lemon', 'โออิชิกรีนที', 1, '500', 20),
 (2, '8858891300073', 'ชาเขียวรสน้ำผึ้งผสมมะนาว', 'GreenTea Honey Lemon', 'อิชิตัน', 1, '420', 20),
 (3, '8858891302619', 'ชาเขียวรสน้ำผึ้งผสมมะนาว', 'GreenTea Honey Lemon', 'อิชิตัน', 1, '600', 20),
-(4, '8851959132364', 'สไปรท์', 'Sprite', 'CocaCola', 3, '325', 50);
+(4, '8851959132364', 'สไปรท์', 'Sprite', 'CocaCola', 3, '325', 50),
+(10, '8850999016863', '', 'Sing', '', 1, '330', 20);
 
 -- --------------------------------------------------------
 
@@ -181,8 +182,8 @@ INSERT INTO `reward` (`id_reward`, `description_reward`, `name_reward`, `img_rew
 (1, '', 'teddy bear hug', '', 10),
 (2, '', 'bag bear hug', '', 20),
 (3, '', 'car bear hug', '', 30),
-(8, '', 'car', '', 100),
-(9, '', 'motorcycle', '', 101);
+(9, '', 'motorcycle', '', 101),
+(21, '', 'test1', '', 111);
 
 -- --------------------------------------------------------
 
@@ -281,8 +282,8 @@ CREATE TABLE `type_user` (
 --
 
 INSERT INTO `type_user` (`id_permission_user`, `name_permission_user`) VALUES
-(1, 'User'),
-(2, 'Admin');
+(1, 'Admin'),
+(2, 'User');
 
 -- --------------------------------------------------------
 
@@ -292,15 +293,15 @@ INSERT INTO `type_user` (`id_permission_user`, `name_permission_user`) VALUES
 
 CREATE TABLE `user` (
   `id_user` int(5) NOT NULL COMMENT 'primary key',
-  `username_user` varchar(20) NOT NULL,
+  `phone_user` varchar(10) NOT NULL,
   `password_user` varchar(20) NOT NULL,
-  `id_permission_user` int(1) NOT NULL COMMENT 'foreign key',
-  `img_user` varchar(255) NOT NULL,
-  `name_user` varchar(255) NOT NULL,
+  `firstname_user` varchar(255) NOT NULL,
+  `lastname_user` varchar(255) NOT NULL,
   `address_user` varchar(255) NOT NULL,
   `email_user` varchar(255) NOT NULL,
-  `tel_user` varchar(10) NOT NULL,
   `total_point_user` int(5) NOT NULL,
+  `img_user` varchar(255) NOT NULL,
+  `id_permission_user` int(1) NOT NULL COMMENT 'foreign key',
   `user_active` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -308,10 +309,18 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `username_user`, `password_user`, `id_permission_user`, `img_user`, `name_user`, `address_user`, `email_user`, `tel_user`, `total_point_user`, `user_active`) VALUES
-(2, 'field', '123456789', 1, '', 'chonnikan wannawong', 'rongkun', 'chonnikan@gmail.com', '0659322359', 2, 0),
-(38, 'jimmie', 'jirakangwan41', 1, 'rati.jpg', 'nutdanai jirakangwan', 'chiang mai', 'jimmie.nutdanai41@gmail.com', '0901325797', 5, 0),
-(43, 'thitiya68', '1234', 2, 'none-img.png', 'thitiya manowang', '55 ถ.ห้วยแก้ว ต.สุเทพ อ.เมือง จ.เชียงใหม่ 50200', 'thitiya861@gmail.com', '0827585492', 300, 0);
+INSERT INTO `user` (`id_user`, `phone_user`, `password_user`, `firstname_user`, `lastname_user`, `address_user`, `email_user`, `total_point_user`, `img_user`, `id_permission_user`, `user_active`) VALUES
+(1, '0827585492', '1234', 'thitiya', 'manowang', '55 ถ.ห้วยแก้ว ต.สุเทพ อ.เมือง จ.เชียงใหม่ 50200', 'thitiya861@gmail.com', 170, '', 1, 0),
+(44, '0932746116', 'pass', 'test', 'test1', '46 หมู่13 Lampang', 'thitiya861@gmail.com', 1130, '', 2, 0),
+(50, '0855555555', '1234', 'test', 'test', '', 'test', 0, '', 2, 0),
+(51, '0866666666', '1234', 'test', 'test', '', 'test', 0, '', 2, 0),
+(52, '0811111111', '1234', 'test', 'test', '', 'test', 0, '', 2, 0),
+(53, '084543515', '1234', 'Please ', 'Please ', '', 'Please ', 0, '', 2, 0),
+(54, '0215545485', '1234', 'Please ', 'Please ', '', 'Please ', 0, '', 2, 0),
+(55, '0844457878', '1234', 'Please ', 'Please ', '', 'Please ', 0, '', 2, 0),
+(56, '0899999999', '1234', 'session_start', 'session_start', '', 'session_start', 0, '', 2, 0),
+(57, '036645245', '1234', 'session', 'session', '', 'session', 0, '', 2, 0),
+(59, '0861177428', '5555', 'singha', 'manowang', '', 'singha@gmail.com', 50, '', 2, 0);
 
 --
 -- Indexes for dumped tables
@@ -355,13 +364,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=10;
+  MODIFY `id_product` int(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `reward`
 --
 ALTER TABLE `reward`
-  MODIFY `id_reward` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_reward` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `size_product`
@@ -373,7 +382,7 @@ ALTER TABLE `size_product`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=44;
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=65;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
