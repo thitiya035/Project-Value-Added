@@ -90,6 +90,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12">
+                        <label for="inputphone" class="form-label">Permission</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-tag"></i>
+                                </span>
+                            </div>
+                            <select class="form-control id_permission">
+                                <option value="1">User</option>
+                                <option value="0">Admin</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

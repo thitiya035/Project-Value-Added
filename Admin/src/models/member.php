@@ -11,6 +11,7 @@ switch ($path) {
         $phone = $_POST['phone'];
         $password = $_POST['password'];
         $con_password = $_POST['con_password'];
+        $id_permission_user = $_POST['id_permission'];
         if ($password == $con_password) {
             $search_phone = "SELECT id_user From user WHERE phone_user = '$phone'";
             $result_search_phone = mysqli_query($dbcon, $search_phone);
@@ -24,7 +25,7 @@ switch ($path) {
                     "span" => "Already Use Phone Number!"
                 ];
             } else {
-                $add_new_user = "INSERT INTO user (phone_user,password_user,firstname_user,lastname_user,email_user,id_permission_user,address_user) VALUES ('$phone', '$password', '$firstname', '$lastname','$email','2','$address')";
+                $add_new_user = "INSERT INTO user (phone_user,password_user,firstname_user,lastname_user,email_user,id_permission_user,address_user) VALUES ('$phone', '$password', '$firstname', '$lastname','$email',$id_permission_user,'$address')";
                 $result_add_new_user = mysqli_query($dbcon, $add_new_user);
                 if ($result_add_new_user) {
                     $remine = [
@@ -51,7 +52,25 @@ switch ($path) {
             ];
         }
         break;
-    case "delete":
+    case "member_delete":
+        $id_user = $_POST['id_user'];
+        $delete_user = "DELETE FROM user WHERE id_user = '$id_user'";
+        $result_delete_user = mysqli_query($dbcon, $delete_user);
+        if ($result_delete_user) {
+            $remine = [
+                "status" => "success",
+                "title" => "Success!",
+                "icon" => "success",
+                "text" => "Delete user success"
+            ];
+        } else {
+            $remine = [
+                "status" => "fail",
+                "title" => "Error!",
+                "icon" => "error",
+                "text" => "Error deleting user from database"
+            ];
+        }
         break;
 }
 echo json_encode($remine);

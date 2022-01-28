@@ -48,7 +48,7 @@ require './src/models/member_fetch.php';
                             <td><?php echo $lists_user['total_point_user']; ?></td>
                             <td>
                                 <button class="btn btn-info btn_edit_detail_user" id="<?php echo $lists_user['id_user']; ?>">Edit</button>
-                                <button class="btn btn-danger btn_delete_detail_user" id="<?php echo $lists_user['id_user']; ?>">Delete</button>
+                                <button class="btn btn-danger member_delete" id="<?php echo $lists_user['id_user']; ?>">Delete</button>
                             </td>
                         </tr>
                     <?php } ?>
