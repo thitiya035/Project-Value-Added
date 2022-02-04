@@ -25,27 +25,38 @@ require './src/models/member_fetch.php';
         <div class="col-12">
             <table class="table table-bordered shadow">
                 <thead>
-                    <tr>
-                        <th scope="col">ID User</th>
+                    <tr class="text-center">
+                        <th scope="col">No</th>
                         <th scope="col">Name</th>
                         <th scope="col">Address</th>
                         <th scope="col">E-mail</th>
                         <th scope="col">Tel</th>
                         <th scope="col">Point</th>
+                        <th scope="col">Level</th>
                         <th scope="col">Setting</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
+                    $count = 0;
                     while ($lists_user = mysqli_fetch_assoc($result_fetch_lists)) {
+                        $count = $count + 1;
                     ?>
                         <tr>
-                            <td><?php echo $lists_user['id_user']; ?></td>
+                            <td class="text-center"><?php echo ($count) ?></td>
                             <td><?php echo $lists_user['firstname_user'] . '&nbsp;&nbsp;&nbsp;' .  $lists_user['lastname_user']; ?></td>
                             <td><?php echo $lists_user['address_user']; ?></td>
                             <td><?php echo $lists_user['email_user']; ?></td>
                             <td><?php echo $lists_user['phone_user']; ?></td>
-                            <td><?php echo $lists_user['total_point_user']; ?></td>
+                            <td class="text-center"><?php echo $lists_user['total_point_user']; ?></td>
+                            <td class="text-center"><?php
+                                                    if ($lists_user['id_permission_user'] == "1") {
+                                                        echo ("Admin");
+                                                    } else if ($lists_user['id_permission_user'] == "2") {
+                                                        echo ("User");
+                                                    }
+                                                    // echo $lists_user['id_permission_user']; 
+                                                    ?></td>
                             <td>
                                 <button class="btn btn-info btn_edit_detail_user" id="<?php echo $lists_user['id_user']; ?>">Edit</button>
                                 <button class="btn btn-danger member_delete" id="<?php echo $lists_user['id_user']; ?>">Delete</button>

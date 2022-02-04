@@ -1,15 +1,15 @@
 <div class="container pt-4">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-12 text-center">
             <div class="jumbotron">
-                <h1 class="display-4">DashBoard</h1>
+                <h1 class="display-4">HOME</h1>
             </div>
         </div>
-    </div>
+    </div> -->
     <?php
     require_once './src/models/update_stock.php';
     ?>
-    <!-- <h1 class="badge bg-secondary" style="font-size: 1.25em;">Detail</h1> -->
+    <h1 class="text-center mb-4 alert alert-secondary" style="font-size: 2em; ">Volume contained in the tank</h1>
     <div class="row text-center">
         <div class="col-4 mx-auto">
             <div class="card shadow rounded">
@@ -42,8 +42,10 @@
             </div>
         </div>
     </div>
- 
     <br>
+    <div>
+        <h1 class="text-center mb-4 alert alert-secondary" style="font-size: 2em; ">Point history</h1>
+    </div>
     <div class="row text-center">
         <div class="col-4 mx-auto">
             <div class="card shadow rounded">
@@ -51,7 +53,7 @@
                     <strong>TOP POINT</strong>
                 </div>
                 <div class="card-body text-left">
-                   <?php include './src/views/show_point.php' ?>
+                    <?php include './src/views/show_point.php' ?>
                 </div>
             </div>
         </div>
