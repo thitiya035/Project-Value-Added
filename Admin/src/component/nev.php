@@ -12,9 +12,6 @@
             <li class="nav-item">
                 <a class="nav-link btn_member_menu" href="member.php">Member</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link btn_permission_menu" href="permission.php">Permission</a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle btn_product_menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
