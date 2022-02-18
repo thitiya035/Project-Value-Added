@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2022 at 04:58 PM
+-- Generation Time: Feb 18, 2022 at 04:36 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -39,34 +39,9 @@ CREATE TABLE `log_exchange_point` (
   `time_exchange_point` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `log_exchange_point`
---
-
-INSERT INTO `log_exchange_point` (`id_user`, `id_product`, `name_product`, `type_product`, `size_product`, `point_product`, `date_exchange_point`, `time_exchange_point`) VALUES
-(1, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'L', 3, '2021-06-08', '05:27:09'),
-(2, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'L', 2, '2021-06-08', '05:31:42'),
-(2, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'M', 2, '2021-06-09', '06:36:02'),
-(1, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'L', 3, '2021-06-09', '05:27:09'),
-(2, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'M', 1, '2021-06-09', '05:31:42'),
-(1, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'M', 2, '2021-06-09', '05:27:09'),
-(2, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'L', 2, '2021-06-09', '05:31:42'),
-(2, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'M', 2, '2021-07-09', '06:36:02'),
-(1, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'L', 3, '2021-07-09', '05:27:09'),
-(2, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'M', 1, '2021-07-09', '05:31:42'),
-(1, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'M', 2, '2021-07-09', '05:27:09'),
-(2, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'L', 2, '2021-07-09', '05:31:42'),
-(1, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'M', 1, '2021-08-09', '06:36:02'),
-(2, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'L', 2, '2021-08-09', '05:27:09'),
-(1, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'M', 1, '2021-08-10', '05:31:42'),
-(2, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'M', 2, '2021-08-10', '05:27:09'),
-(3, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'L', 3, '2021-08-09', '05:31:42'),
-(3, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'M', 3, '2021-08-10', '05:31:42'),
-(3, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'M', 3, '2021-08-11', '05:27:09');
-
 -- --------------------------------------------------------
 
---
+--  
 -- Table structure for table `log_exchange_reward`
 --
 
@@ -141,24 +116,23 @@ INSERT INTO `log_temp_exchange_point` (`id_user`, `id_product`, `name_product`, 
 CREATE TABLE `product` (
   `id_product` int(20) NOT NULL COMMENT 'primary key',
   `id_barcode_product` varchar(13) NOT NULL,
-  `name_product` varchar(255) NOT NULL,
+  `name_product_thai` varchar(255) NOT NULL,
   `name_product_eng` varchar(50) NOT NULL,
   `brand_product` varchar(50) NOT NULL,
-  `id_type_product` int(2) NOT NULL COMMENT 'foreign key',
   `size_product` varchar(10) NOT NULL,
-  `point_product` int(2) NOT NULL
+  `id_type_product` int(10) NOT NULL COMMENT 'foreign key'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id_product`, `id_barcode_product`, `name_product`, `name_product_eng`, `brand_product`, `id_type_product`, `size_product`, `point_product`) VALUES
-(1, '8854698005043', 'ชาเขียวรสน้ำผึ้งผสมมะนาว', 'GreenTea Honey Lemon', 'โออิชิกรีนที', 1, '500', 20),
-(2, '8858891300073', 'ชาเขียวรสน้ำผึ้งผสมมะนาว', 'GreenTea Honey Lemon', 'อิชิตัน', 1, '420', 20),
-(3, '8858891302619', 'ชาเขียวรสน้ำผึ้งผสมมะนาว', 'GreenTea Honey Lemon', 'อิชิตัน', 1, '600', 20),
-(4, '8851959132364', 'สไปรท์', 'Sprite', 'CocaCola', 3, '325', 50),
-(10, '8850999016863', '', 'Sing', '', 1, '330', 20);
+INSERT INTO `product` (`id_product`, `id_barcode_product`, `name_product_thai`, `name_product_eng`, `brand_product`, `size_product`, `id_type_product`) VALUES
+(1, '8854698005043', 'ชาเขียวรสน้ำผึ้งผสมมะนาว', 'GreenTea Honey Lemon', 'โออิชิกรีนที', '500', 1),
+(3, '8858998584093', 'ชาอู่หลง', 'Oolong TEA', 'โตโย', '490', 1),
+(4, '8850999016863', '', 'Sing', '', '330', 3),
+(5, '8850393800013', 'บีทาเก้น', 'Betagen', '', '140', 2),
+(9, '8851959158364', 'สไปรท์', 'Sprite', 'Cocacola', '450', 1);
 
 -- --------------------------------------------------------
 
@@ -184,27 +158,6 @@ INSERT INTO `reward` (`id_reward`, `description_reward`, `name_reward`, `img_rew
 (3, '', 'car bear hug', '', 30),
 (9, '', 'motorcycle', '', 101),
 (21, '', 'test1', '', 111);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `size_product`
---
-
-CREATE TABLE `size_product` (
-  `id_size_product` int(2) NOT NULL,
-  `size_product` varchar(3) NOT NULL,
-  `description_size` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `size_product`
---
-
-INSERT INTO `size_product` (`id_size_product`, `size_product`, `description_size`) VALUES
-(2, 'S', '150-500ml'),
-(3, 'M', '500-900ml'),
-(4, 'L', '900-1500ml');
 
 -- --------------------------------------------------------
 
@@ -310,17 +263,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `phone_user`, `password_user`, `firstname_user`, `lastname_user`, `address_user`, `email_user`, `total_point_user`, `img_user`, `id_permission_user`, `user_active`) VALUES
-(1, '0827585492', '1234', 'thitiya', 'manowang', '55 ถ.ห้วยแก้ว ต.สุเทพ อ.เมือง จ.เชียงใหม่ 50200', 'thitiya861@gmail.com', 170, '', 1, 0),
+(1, '0827585492', '1234', 'thitiya', 'manowang', '55 ถ.ห้วยแก้ว ต.สุเทพ อ.เมือง จ.เชียงใหม่ 50200', 'thitiya861@gmail.com', 200, '', 1, 0),
 (44, '0932746116', 'pass', 'test', 'test1', '46 หมู่13 Lampang', 'thitiya861@gmail.com', 1130, '', 2, 0),
-(50, '0855555555', '1234', 'test', 'test', '', 'test', 0, '', 2, 0),
-(51, '0866666666', '1234', 'test', 'test', '', 'test', 0, '', 2, 0),
-(52, '0811111111', '1234', 'test', 'test', '', 'test', 0, '', 2, 0),
-(53, '084543515', '1234', 'Please ', 'Please ', '', 'Please ', 0, '', 2, 0),
-(54, '0215545485', '1234', 'Please ', 'Please ', '', 'Please ', 0, '', 2, 0),
-(55, '0844457878', '1234', 'Please ', 'Please ', '', 'Please ', 0, '', 2, 0),
-(56, '0899999999', '1234', 'session_start', 'session_start', '', 'session_start', 0, '', 2, 0),
-(57, '036645245', '1234', 'session', 'session', '', 'session', 0, '', 2, 0),
-(59, '0861177428', '5555', 'singha', 'manowang', '', 'singha@gmail.com', 50, '', 2, 0);
+(59, '0861177428', '5555', 'singha', 'manowang', '', 'singha@gmail.com', 170, '', 2, 0);
 
 --
 -- Indexes for dumped tables
@@ -330,7 +275,8 @@ INSERT INTO `user` (`id_user`, `phone_user`, `password_user`, `firstname_user`, 
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`id_product`);
+  ADD PRIMARY KEY (`id_product`),
+  ADD KEY `Foreign key type product` (`id_type_product`);
 
 --
 -- Indexes for table `reward`
@@ -339,16 +285,28 @@ ALTER TABLE `reward`
   ADD PRIMARY KEY (`id_reward`);
 
 --
--- Indexes for table `size_product`
---
-ALTER TABLE `size_product`
-  ADD PRIMARY KEY (`id_size_product`);
-
---
 -- Indexes for table `stock`
 --
 ALTER TABLE `stock`
   ADD PRIMARY KEY (`id_type_product`);
+
+--
+-- Indexes for table `token_line`
+--
+ALTER TABLE `token_line`
+  ADD PRIMARY KEY (`id_admin`);
+
+--
+-- Indexes for table `type_product`
+--
+ALTER TABLE `type_product`
+  ADD PRIMARY KEY (`id_type_product`);
+
+--
+-- Indexes for table `type_user`
+--
+ALTER TABLE `type_user`
+  ADD PRIMARY KEY (`id_permission_user`);
 
 --
 -- Indexes for table `user`
@@ -364,7 +322,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=11;
+  MODIFY `id_product` int(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `reward`
@@ -373,16 +331,20 @@ ALTER TABLE `reward`
   MODIFY `id_reward` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `size_product`
---
-ALTER TABLE `size_product`
-  MODIFY `id_size_product` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=65;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `Foreign key type product` FOREIGN KEY (`id_type_product`) REFERENCES `type_product` (`id_type_product`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
