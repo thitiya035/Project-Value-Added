@@ -30,9 +30,13 @@ require './src/models/reward.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($lists_reward = mysqli_fetch_assoc($result_fetch_lists)) { ?>
+                    <?php
+                    $No = 0;
+                    while ($lists_reward = mysqli_fetch_assoc($result_fetch_lists)) {
+                        $No = $No + 1;
+                    ?>
                         <tr>
-                            <td scope="row"><?php echo $lists_reward['id_reward']; ?></td>
+                            <td class="text-center"><?php echo ($No) ?></td>
                             <td scope="row"><?php echo $lists_reward['name_reward']; ?></td>
                             <td scope="row"><?php echo $lists_reward['point_exchange_reward']; ?></td>
                             <td scope="row ">

@@ -176,4 +176,37 @@ $(document).ready(function () {
       }
     });
   });
+  $(".product_add").click(function () {
+    var id_barcode = $(".id_barcode").val();
+    var name_product_thai = $(".name_product_thai").val();
+    var name_product_eng = $(".name_product_eng").val();
+    var brand_product = $(".brand_product").val();
+    var size = $(".size").val();
+    var id_type_product = $(".id_type_product").val();
+    $.ajax({
+      type: "POST",
+      url: "./src/models/product.php",
+      data: {
+        path_product: "product_add",
+        id_barcode: id_barcode,
+        name_product_thai: name_product_thai,
+        name_product_eng: name_product_eng,
+        brand_product: brand_product,
+        size: size,
+        id_type_product: id_type_product,
+      },
+      dataType: "json",
+      success: function (remine) {
+        swal({
+          title: remine.title,
+          text: remine.text,
+          icon: remine.icon,
+        }).then(() => {
+          if (remine.status == "success") {
+            location.reload();
+          }
+        });
+      },
+    });
+  });
 });
