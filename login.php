@@ -9,4 +9,3 @@ include './User/views/login_modal.php';
 include './User/component/footage.php';
 
 
-// Say hi lew

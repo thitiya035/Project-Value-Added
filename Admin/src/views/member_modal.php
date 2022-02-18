@@ -38,12 +38,12 @@ require './src/models/member_fetch.php';
                 </thead>
                 <tbody>
                     <?php
-                    $count = 0;
+                    $No = 0;
                     while ($lists_user = mysqli_fetch_assoc($result_fetch_lists)) {
-                        $count = $count + 1;
+                        $No = $No + 1;
                     ?>
                         <tr>
-                            <td class="text-center"><?php echo ($count) ?></td>
+                            <td class="text-center"><?php echo ($No) ?></td>
                             <td><?php echo $lists_user['firstname_user'] . '&nbsp;&nbsp;&nbsp;' .  $lists_user['lastname_user']; ?></td>
                             <td><?php echo $lists_user['address_user']; ?></td>
                             <td><?php echo $lists_user['email_user']; ?></td>
