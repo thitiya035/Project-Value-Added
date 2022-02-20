@@ -209,4 +209,37 @@ $(document).ready(function () {
       },
     });
   });
+  $(".product_delete").click(function () {
+    var id_product = $(this).attr("id");
+    swal({
+      title: "Are you sure ?!",
+      text: "You want confirmation to delete the data ?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((confirm) => {
+      if (confirm) {
+        $.ajax({
+          type: "POST",
+          url: "./src/models/product.php",
+          data: {
+            path_product: "product_delete",
+            id_product: id_product,
+          },
+          dataType: "json",
+          success: function (remine) {
+            swal({
+              title: remine.title,
+              text: remine.text,
+              icon: remine.icon,
+            }).then(() => {
+              if (remine.status == "success") {
+                location.reload();
+              }
+            });
+          },
+        });
+      }
+    });
+  });
 });
