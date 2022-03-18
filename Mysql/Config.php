@@ -1,7 +1,7 @@
 <?php
 
 $username = "root";
-$password = "1234";
+$password = "";
 $servername = "localhost";
 $dbname = "projectbc";
 
