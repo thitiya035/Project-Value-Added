@@ -1,0 +1,39 @@
+input,
+button,
+p {
+  vertical-align: middle;
+}
+
+strong.t {
+  font-size: 130%;
+  margin-left: 20px;
+}
+
+.button-token {
+  background-color: #555555; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 27px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.input-line-token {
+  width: 870px;
+  height: 45px;
+  border: 2px solid #555555;
+  margin: 8px 0;
+  padding: 12px 30px;
+}
+
+.input-code {
+  width: 200px;
+  height: 45px;
+  border: 2px solid #555555;
+  margin: 8px 0;
+  padding: 5px 15px;
+}

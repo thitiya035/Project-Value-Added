@@ -242,4 +242,50 @@ $(document).ready(function () {
       }
     });
   });
+  $(".token_line_btn").click(function () {
+    var token_line = $(".token_line").val();
+    $.ajax({
+      type: "POST",
+      url: "./src/models/token_line.php",
+      data: {
+        path_setting : "edit_token_line",
+        token_line : token_line
+      },
+      dataType: "json",
+      success: function (remine) {
+        swal({
+          title: remine.title,
+          text: remine.text,
+          icon: remine.icon,
+        }).then(() => {
+          if (remine.status == "success") {
+            location.reload();
+          }
+        });
+      },
+    });
+  });
+  $(".code_btn").click(function () {
+    var code = $(".code").val();
+    $.ajax({
+      type: "POST",
+      url: "./src/models/setting.php",
+      data: {
+        path_setting: "edit_code",
+        code : code
+      },
+      dataType: "json",
+      success: function (remine) {
+        swal({
+          title: remine.title,
+          text: remine.text,
+          icon: remine.icon,
+        }).then(() => {
+          if (remine.status == "success") {
+            location.reload();
+          }
+        });
+      },
+    });
+  });
 });
