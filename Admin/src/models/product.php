@@ -41,6 +41,27 @@ switch ($path) {
                 ];
             }
         }
+        break;
+    case "product_delete":
+        $id_product = $_POST['id_product'];
+        $delete_product = "DELETE FROM product WHERE id_product = '$id_product'";
+        $result_delete_product = mysqli_query($dbcon, $delete_product);
+        if ($result_delete_product) {
+            $remine = [
+                "status" => "success",
+                "title" => "Success!",
+                "icon" => "success",
+                "text" => "Delete user success"
+            ];
+        } else {
+            $remine = [
+                "status" => "fail",
+                "title" => "Error!",
+                "icon" => "error",
+                "text" => "Error deleting product from database",
+            ];
+        }
+        break;
 }
 
 echo json_encode($remine);
