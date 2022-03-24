@@ -23,7 +23,7 @@
                             <input type="text" class="form-control firstname" name="firstname" placeholder="First name" aria-label="First name">
                         </div>
                     </div>
-                    <div class="modal-register">
+                    <div class="modal-register col-md-6">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
