@@ -44,7 +44,33 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <label for="inputpassword" class="form-label">Address</label>
+                        <label for="inputpassword" class="form-label">Old Password</label>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-key"></i>
+                                    </span>
+                                </div>
+                                <input type="password" class="form-control oldpassword" placeholder="Enter old password" rows="3" cols="30" name="oldpassword" aria-label="Password"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="inputpassword" class="form-label">New Password</label>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-key"></i>
+                                    </span>
+                                </div>
+                                <input type="password" class="form-control newpassword" placeholder="Enter new password" rows="3" cols="30" name="newpassword" aria-label="Password"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="inputaddress" class="form-label">Address</label>
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
