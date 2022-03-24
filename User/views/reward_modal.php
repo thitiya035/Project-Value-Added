@@ -22,7 +22,7 @@ require './User/models/reward.php';
             <table class="col" >
                 <tbody>
                     <tr>
-                        <th class="col-2 "><?php echo '<img src="data:image;base64,'.base64_encode($result['img_reward']).'">'; ?></th>
+                    <th class="col-2 "><?php echo '<img src="data:image;base64,'.base64_encode($result['img_reward']).'">'; ?></th>
                         <td class="col-4" style="background-color:#fafcb4; height: 100px;"><h2 class="text-center" ><?php echo $result['name_reward']; ?></h2></td>
                         <td class="col-2" style="background-color:#fafcb4;" ><h4 class="text-center" ><input type="hidden" class="point" name="key" value="<?=$result['point_exchange_reward']?>" /><?php echo $result['point_exchange_reward'];?></h4></td>
                         <td class="col-2" style="background-color:#fafcb4;" ><button id="exchange" class="btn-block col-12 btn-lg text-light exchange" style="background-color:#ff9234" >Exchange</button></td>
