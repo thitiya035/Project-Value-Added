@@ -52,7 +52,7 @@ require './User/views/edit_profile_modal.php';
 <footer class="page-footer">
     <div>
         <div class="text-center d-flex " style="background-color: rgba(0, 0, 0, 0.2);">
-            <a href="reward.php" type="button" class="btn btn-warning col-6 btn-lg">Get Reward</a>
+            <a href="reward.php" type="button" class="btn btn-secondary col-6 btn-lg">Get Reward</a>
             <a href="./User/models/logout.php" type="button" class="btn btn-danger col-6 btn-lg">Logout</a>
         </div>
     </div>

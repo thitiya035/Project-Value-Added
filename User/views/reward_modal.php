@@ -10,9 +10,7 @@ require './User/models/reward.php';
                 echo $total_point['total_point_user'] ;
             ?> 
         </div>
-        <h2>Point</h2>
     </div>
-</div>
 </div>
     <div class="card ">
     <div class="text-light text-center d-flex" style="background-color:#b0db72; height: 70px;"><h2 class="col ">Rewards</h2> </div>
