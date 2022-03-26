@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2022 at 04:36 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Generation Time: Mar 19, 2022 at 07:23 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,23 +24,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `component`
+--
+
+CREATE TABLE `component` (
+  `token_line` varchar(255) NOT NULL,
+  `code` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `component`
+--
+
+INSERT INTO `component` (`token_line`, `code`) VALUES
+('m8Z43Fezsdws0Pkyz84VWvcRr6cHSbe1UTgc3AeexeN', '1997');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `log_exchange_point`
 --
 
 CREATE TABLE `log_exchange_point` (
   `id_user` int(10) NOT NULL,
-  `id_product` int(20) NOT NULL,
+  `group_step` varchar(50) NOT NULL,
+  `id_product` varchar(255) NOT NULL,
   `name_product` varchar(255) NOT NULL,
   `type_product` varchar(255) NOT NULL,
-  `size_product` varchar(255) NOT NULL,
-  `point_product` int(2) NOT NULL,
-  `date_exchange_point` date NOT NULL,
-  `time_exchange_point` time NOT NULL
+  `point_product` int(4) NOT NULL,
+  `date_exchange_point` varchar(255) NOT NULL,
+  `time_exchange_point` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `log_exchange_point`
+--
+
+INSERT INTO `log_exchange_point` (`id_user`, `group_step`, `id_product`, `name_product`, `type_product`, `point_product`, `date_exchange_point`, `time_exchange_point`) VALUES
+(1, 'barcode', '4', 'Sing\n', 'can\n', 50, '11/03/2022', '17:37:57'),
+(65, 'barcode', '10', 'Peach Soju Can \n', 'can\n', 50, '11/03/2022', '17:48:44'),
+(1, 'Sensor', 'Unknow', 'Unknow', 'can', 50, '11/03/2022', '18:04:38'),
+(1, 'Sensor', 'Unknow', 'Unknow', 'can', 50, '11/03/2022', '18:09:36'),
+(1, 'barcode', '4', 'Sing\n', 'can\n', 50, '11/03/2022', '18:10:00');
 
 -- --------------------------------------------------------
 
---  
+--
 -- Table structure for table `log_exchange_reward`
 --
 
@@ -81,35 +109,6 @@ CREATE TABLE `log_login` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_temp_exchange_point`
---
-
-CREATE TABLE `log_temp_exchange_point` (
-  `id_user` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
-  `name_product` varchar(255) NOT NULL,
-  `type_product` varchar(255) NOT NULL,
-  `size_product` varchar(255) NOT NULL,
-  `point_product` int(2) NOT NULL,
-  `date_exchange_point` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `log_temp_exchange_point`
---
-
-INSERT INTO `log_temp_exchange_point` (`id_user`, `id_product`, `name_product`, `type_product`, `size_product`, `point_product`, `date_exchange_point`) VALUES
-(38, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'S', 2, '2021-06-09 15:30:02'),
-(38, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'S', 3, '2021-06-09 15:30:20'),
-(38, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'S', 2, '2021-06-09 15:30:21'),
-(38, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'S', 2, '2021-06-09 17:02:16'),
-(38, 99, 'ขวดพลาสติก', 'ขวดพลาสติกขุ่น', 'S', 3, '2021-06-09 17:02:22'),
-(38, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'S', 2, '2021-06-09 17:02:25'),
-(38, 99, 'ขวดพลาสติก', 'ขวดพลาสติกใส', 'S', 2, '2021-06-10 03:40:06');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `product`
 --
 
@@ -132,7 +131,8 @@ INSERT INTO `product` (`id_product`, `id_barcode_product`, `name_product_thai`, 
 (3, '8858998584093', 'ชาอู่หลง', 'Oolong TEA', 'โตโย', '490', 1),
 (4, '8850999016863', '', 'Sing', '', '330', 3),
 (5, '8850393800013', 'บีทาเก้น', 'Betagen', '', '140', 2),
-(9, '8851959158364', 'สไปรท์', 'Sprite', 'Cocacola', '450', 1);
+(9, '8851959158364', 'สไปรท์', 'Sprite', 'Cocacola', '450', 1),
+(10, '8801048311002', 'โซจูพีช', 'Peach Soju Can ', 'Jinro', '350', 3);
 
 -- --------------------------------------------------------
 
@@ -175,9 +175,9 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`id_type_product`, `number`) VALUES
-(1, 10),
-(2, 20),
-(3, 30);
+(1, 2),
+(2, 2),
+(3, 6);
 
 -- --------------------------------------------------------
 
@@ -263,7 +263,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `phone_user`, `password_user`, `firstname_user`, `lastname_user`, `address_user`, `email_user`, `total_point_user`, `img_user`, `id_permission_user`, `user_active`) VALUES
-(1, '0827585492', '1234', 'thitiya', 'manowang', '55 ถ.ห้วยแก้ว ต.สุเทพ อ.เมือง จ.เชียงใหม่ 50200', 'thitiya861@gmail.com', 200, '', 1, 0),
+(1, '0827585492', '1234', 'thitiya', 'manowang', '55 ถ.ห้วยแก้ว ต.สุเทพ อ.เมือง จ.เชียงใหม่ 50200', 'thitiya861@gmail.com', 380, '', 1, 0),
 (44, '0932746116', 'pass', 'test', 'test1', '46 หมู่13 Lampang', 'thitiya861@gmail.com', 1130, '', 2, 0),
 (59, '0861177428', '5555', 'singha', 'manowang', '', 'singha@gmail.com', 170, '', 2, 0);
 
@@ -322,7 +322,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=10;
+  MODIFY `id_product` int(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `reward`
@@ -334,7 +334,7 @@ ALTER TABLE `reward`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=65;
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=66;
 
 --
 -- Constraints for dumped tables
