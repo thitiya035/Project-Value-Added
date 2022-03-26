@@ -23,7 +23,7 @@
                             <input type="text" class="form-control firstname" name="firstname" placeholder="First name" aria-label="First name">
                         </div>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="modal-register col-md-6">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -84,7 +84,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" id="formsubmit" name="submit" class="btn btn-primary register">Save changes</button>
+                <button type="submit" id="formsubmit" name="submit" class="btn btn-warning register">Register</button>
             </div>
         </div>
     </div>

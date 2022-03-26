@@ -79,6 +79,7 @@ $(document).ready(function () {
       },
       dataType: "json",
       success: function (remine) {
+
         if (remine.status == "success") {
           console.log("session is " + remine.session);
           swal({
@@ -86,7 +87,18 @@ $(document).ready(function () {
             text: remine.text,
             icon: remine.icon,
           });
+          $('#modal-register').modal('hide');
+          $("#modal-register").on("hidden.bs.modal", function(){
+            $('.modal-body').find("input[type=text], input[type=number], input[type=password]").val("");
+        });
           // window.location = "profile.php";
+        } else if (remine.status == "Incomplete") {
+          swal({
+            title: remine.title,
+            text: remine.text,
+            icon: remine.icon,
+          });
+        
         } else if (remine.status == "fail") {
           swal({
             title: remine.title,
@@ -108,14 +120,17 @@ $(document).ready(function () {
         }
       },
     });
+    
   });
 
   $(".edit_user").click(function () {
     var firstname = $(".firstname").val();
     var lastname = $(".lastname").val();
     var email = $(".email").val();
+    var oldpassword = $(".oldpassword").val();
+    var newpassword = $(".newpassword").val();
     var address = $(".address").val();
-
+    
     // console.log("firstname is " + firstname + "  lastname is " + lastname);
     // console.log("  Email is " + email + "  address is " + address);
     $.ajax({
@@ -126,19 +141,30 @@ $(document).ready(function () {
         firstname: firstname,
         lastname: lastname,
         email: email,
+        oldpassword:  oldpassword,
+        newpassword: newpassword,
         address: address,
       },
       dataType: "json",
       success: function (remine) {
-        swal({
-          title: remine.title,
-          text: remine.text,
-          icon: remine.icon,
-        }).then((confirm) => {
-          // if(confirm){
-          location.reload();
-          // }
-        });
+        if (remine.status == "success") {
+          swal({
+            title: remine.title,
+            text: remine.text,
+            icon: remine.icon,
+          }).then((confirm) => {
+            // if(confirm){
+            location.reload();
+            // }
+          });
+          // window.location = "profile.php";
+        } else if (remine.status == "wrongpass") {
+          swal({
+            title: remine.title,
+            text: remine.text,
+            icon: remine.icon,
+          });
+        }
       },
     });
   });
