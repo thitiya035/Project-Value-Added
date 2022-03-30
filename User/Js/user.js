@@ -134,4 +134,35 @@ $(document).ready(function () {
       },
     });
   });
+
+  $(".reward_ex").click(function () {
+    var id_reward = $(this).attr("id");
+    // console.log(id_reward);
+    swal({
+      title: "Are you sure ?!",
+      text: "You want exchange reward ?",
+      icon: "warning",
+      buttons: true,
+    }).then((confirm) => {
+      if (confirm) {
+        $.ajax({
+          type: "POST",
+          url: "./src/models/reward_ex.php",
+          data: {
+            id_reward: id_reward,
+          },
+          dataType: "json",
+          success: function (remine) {
+            swal({
+              title: remine.title,
+              text: remine.text,
+              icon: remine.icon,
+            }).then(() => {
+              location.reload();
+            });
+          },
+        });
+      }
+    });
+  });
 });

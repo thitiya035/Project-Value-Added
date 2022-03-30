@@ -6,11 +6,11 @@ require './src/models/reward.php';
     <div class="row">
         <div class="col-12 text-center">
             <div class="jumbotron ">
-                <h1 class="display-4">Required Reward</h1>
+                <h1 class="display-4">Exchange Of Reward</h1>
             </div>
         </div>
         <div class="col-12 mb-3">
-            <h1 class="badge " style="font-size: 1.75rem;"> List Required </h1>
+            <h1 class="badge " style="font-size: 1.3rem;">List Exchange Of Reward</h1>
         </div>
         <!-- <div class="col-12 text-right mb-3"> -->
 
@@ -24,7 +24,6 @@ require './src/models/reward.php';
                         <th scope="col">Point of exchange</th>
                         <th scope="col">Stock</th>
                         <th scope="col">Setting</th>
-
                     </tr>
                 </thead>
                 <tbody>

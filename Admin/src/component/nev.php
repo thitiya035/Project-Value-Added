@@ -24,7 +24,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle btn_product_menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reward</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="reward_ex_list.php">Reward List</a>
+                    <a class="dropdown-item" href="reward_ex_list.php">Exchange Reward</a>
                     <a class="dropdown-item" href="reward.php">Reward Item</a>
                 </div>
             </li>
