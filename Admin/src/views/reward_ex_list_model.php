@@ -6,14 +6,11 @@ require './src/models/reward.php';
     <div class="row">
         <div class="col-12 text-center">
             <div class="jumbotron ">
-                <h1 class="display-4">Reward</h1>
+                <h1 class="display-4">Required Reward</h1>
             </div>
         </div>
         <div class="col-12 mb-3">
-            <h1 class="badge " style="font-size: 1.75rem;"> List item reward </h1>
-            <button type="button" class="btn btn-warning float-right" style="text-align: right" data-toggle="modal" data-target="#modal-reward-add">
-                Add Reward
-            </button>
+            <h1 class="badge " style="font-size: 1.75rem;"> List Required </h1>
         </div>
         <!-- <div class="col-12 text-right mb-3"> -->
 

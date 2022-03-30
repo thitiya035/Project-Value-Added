@@ -2,27 +2,31 @@
 require './User/models/reward.php';
 ?>
 
-<header>
-    <div class= "mt-3">
-        <a href="profile.php" type="button" class="btn btn-danger  btn-lg">Back</a>
+<!-- <header>
+    <div class="mt-3">
+        <a href="profile.php" type="button" class="btn btn-danger btn-lg float-right mr-3 col-1">Back</a>
     </div>
-</header>
+</header> -->
 
 
 <!-- <div class="container "> -->
+<!-- <div class="container d-flex justify-content-center"> -->
+<div class="container mt-3 float-right">
+    <a href="profile.php" type="button" class="btn btn-danger btn-lg float-right mr-3 col-2">Back</a>
+</div>
 <div class="container d-flex justify-content-center">
-    <div class="circle-bg ">
-        <div class="h1">
-            <?php
-            echo $total_point['total_point_user'];
-            ?>
+    <div class="circle-bg">
+        <div class="h1" style="font-size: 4rem;">
+            <?php echo $total_point['total_point_user']; ?>
         </div>
+        <h2 style="font-size: 2rem;">Point</h2>
     </div>
 </div>
+
 <div class="container ">
     <div class="card">
         <div class="text-light text-center d-flex" style="background-color:#b0db72; height: 70px;">
-            <h2 class="col ">Rewards</h2>
+            <h2 class="col mt-3"> <strong>Rewards</strong></h2>
         </div>
 
         <?php foreach ($result as $result) : ?>
@@ -35,9 +39,9 @@ require './User/models/reward.php';
                                 <h2 class="text-center"><?php echo $result['name_reward']; ?></h2>
                             </td>
                             <td class="col-2" style="background-color:#fafcb4;">
-                                <h4 class="text-center"><input type="hidden" class="point" name="key" value="<?= $result['point_exchange_reward'] ?>" /><?php echo $result['point_exchange_reward']; ?></h4>
+                                <h4 class="text-center"><input type="hidden" class="point" name="key" value="<?= $result['point_exchange_reward'] ?>" /><?php echo $result['point_exchange_reward']; ?> &nbsp;&nbsp; Point</h4>
                             </td>
-                            <td class="col-2" style="background-color:#fafcb4;"><button id="exchange" class="btn-block col-12 btn-lg text-light exchange" style="background-color:#ff9234">Exchange</button></td>
+                            <td class="col-2" style="background-color:#fafcb4;"><button id="exchange" class="btn-block col-12 btn-lg text-light exchange " style="background-color:#ff9234">Exchange</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -46,13 +50,3 @@ require './User/models/reward.php';
         <?php endforeach; ?>
     </div>
 </div>
-
-
-
-<!-- <footer class="page-footer">
-    <div>
-        <div class="text-center d-flex " style="background-color: rgba(0, 0, 0, 0.2);">
-            <a href="profile.php" type="button" class="btn btn-danger col-12 btn-lg">Back</a>
-        </div>
-    </div>
-</footer> -->
