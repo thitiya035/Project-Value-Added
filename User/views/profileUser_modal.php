@@ -1,6 +1,6 @@
 <?php
-require './User/models/profileUser.php';
-require './User/views/edit_profile_modal.php';
+require_once './User/models/profileUser.php';
+require_once './User/views/edit_profile_modal.php';
 ?>
 
 <!-- <div>

@@ -1,7 +1,6 @@
 <?php
 require './User/models/reward.php';
 ?>
-
 <div class="container ">
 <div class="container d-flex justify-content-center">
     <div class="circle-bg ">
