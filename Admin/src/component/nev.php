@@ -20,9 +20,15 @@
                     <a class="dropdown-item" href="type_product.php">Type of product</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link btn_reward_menu" href="reward.php">Reward</a>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle btn_product_menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reward</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="reward_ex_list.php">Exchange Reward</a>
+                    <a class="dropdown-item" href="reward.php">Reward Item</a>
+                </div>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link btn_setting_menu" href="setting.php">LineNotifly</a>
             </li>

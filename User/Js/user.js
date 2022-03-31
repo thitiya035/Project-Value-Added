@@ -39,9 +39,9 @@ $(document).ready(function () {
             window.location = "profile.php";
           }
         } else if (remine.status == "fail") {
-          $(".warning").html(
-            "<div class='alert alert-warning'>" + remine.span + "</div>"
-          );
+          // $(".warning").html(
+          //   "<div class='alert alert-warning'>" + remine.span + "</div>"
+          // );
           swal({
             title: remine.title,
             text: remine.text,
@@ -59,11 +59,6 @@ $(document).ready(function () {
     var phone = $(".phone").val();
     var password = $(".repassword").val();
     var con_password = $(".con_repassword").val();
-    // console.log("firstname is " + firstname + "  lastname is " + lastname);
-    // console.log("  Email is " + email + "  Phone is " + phone);
-    // console.log(
-    //   "  password is " + password + "  con_password is " + con_password
-    // );
 
     $.ajax({
       type: "POST",
@@ -79,39 +74,16 @@ $(document).ready(function () {
       },
       dataType: "json",
       success: function (remine) {
-
         if (remine.status == "success") {
           console.log("session is " + remine.session);
           swal({
             title: remine.title,
             text: remine.text,
             icon: remine.icon,
+          }).then((confirm) => {
+            window.location = "profile.php";
           });
-          $('#modal-register').modal('hide');
-          $("#modal-register").on("hidden.bs.modal", function(){
-            $('.modal-body').find("input[type=text], input[type=number], input[type=password]").val("");
-        });
-          // window.location = "profile.php";
-        } else if (remine.status == "Incomplete") {
-          swal({
-            title: remine.title,
-            text: remine.text,
-            icon: remine.icon,
-          });
-        
-        } else if (remine.status == "fail") {
-          swal({
-            title: remine.title,
-            text: remine.text,
-            icon: remine.icon,
-          });
-        } else if (remine.status == "have_phone") {
-          swal({
-            title: remine.title,
-            text: remine.text,
-            icon: remine.icon,
-          });
-        } else if (remine.status == "password_notequal") {
+        } else {
           swal({
             title: remine.title,
             text: remine.text,
@@ -120,7 +92,6 @@ $(document).ready(function () {
         }
       },
     });
-    
   });
 
   $(".edit_user").click(function () {
@@ -130,9 +101,7 @@ $(document).ready(function () {
     var oldpassword = $(".oldpassword").val();
     var newpassword = $(".newpassword").val();
     var address = $(".address").val();
-    
-    // console.log("firstname is " + firstname + "  lastname is " + lastname);
-    // console.log("  Email is " + email + "  address is " + address);
+
     $.ajax({
       type: "POST",
       url: "./User/models/edit_profile.php",
@@ -141,7 +110,7 @@ $(document).ready(function () {
         firstname: firstname,
         lastname: lastname,
         email: email,
-        oldpassword:  oldpassword,
+        oldpassword: oldpassword,
         newpassword: newpassword,
         address: address,
       },
@@ -153,11 +122,8 @@ $(document).ready(function () {
             text: remine.text,
             icon: remine.icon,
           }).then((confirm) => {
-            // if(confirm){
             location.reload();
-            // }
           });
-          // window.location = "profile.php";
         } else if (remine.status == "wrongpass") {
           swal({
             title: remine.title,
@@ -166,6 +132,37 @@ $(document).ready(function () {
           });
         }
       },
+    });
+  });
+
+  $(".reward_ex").click(function () {
+    var id_reward = $(this).attr("id");
+    // console.log(id_reward);
+    swal({
+      title: "Are you sure ?!",
+      text: "You want exchange reward ?",
+      icon: "warning",
+      buttons: true,
+    }).then((confirm) => {
+      if (confirm) {
+        $.ajax({
+          type: "POST",
+          url: "./User/models/reward_ex.php",
+          data: {
+            id_reward: id_reward,
+          },
+          dataType: "json",
+          success: function (remine) {
+            swal({
+              title: remine.title,
+              text: remine.text,
+              icon: remine.icon,
+            }).then(() => {
+              location.reload();
+            });
+          },
+        });
+      }
     });
   });
 });
