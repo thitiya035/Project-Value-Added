@@ -147,7 +147,7 @@ $(document).ready(function () {
       if (confirm) {
         $.ajax({
           type: "POST",
-          url: "./src/models/reward_ex.php",
+          url: "./User/models/reward_ex.php",
           data: {
             id_reward: id_reward,
           },

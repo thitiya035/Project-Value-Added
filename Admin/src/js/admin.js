@@ -248,8 +248,8 @@ $(document).ready(function () {
       type: "POST",
       url: "./src/models/token_line.php",
       data: {
-        path_setting : "edit_token_line",
-        token_line : token_line
+        path_setting: "edit_token_line",
+        token_line: token_line,
       },
       dataType: "json",
       success: function (remine) {
@@ -272,7 +272,7 @@ $(document).ready(function () {
       url: "./src/models/setting.php",
       data: {
         path_setting: "edit_code",
-        code : code
+        code: code,
       },
       dataType: "json",
       success: function (remine) {
@@ -284,6 +284,30 @@ $(document).ready(function () {
           if (remine.status == "success") {
             location.reload();
           }
+        });
+      },
+    });
+  });
+
+  $(".add_tracking").click(function () {
+    var track = $(".tracking").val();
+    $.ajax({
+      type: "POST",
+      url: "./src/models/reward_ex.php",
+      data: {
+        path_ex: "add_track",
+        track: track,
+      },
+      dataType: "json",
+      success: function (remine) {
+        swal({
+          title: remine.title,
+          text: remine.text,
+          icon: remine.icon,
+        }).then(() => {
+          location.reload();
+          // $("#modal-history-ex-reward").modal("show");
+          // $("#modal-input-track").modal("hide");
         });
       },
     });
