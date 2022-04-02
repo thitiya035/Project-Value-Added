@@ -35,29 +35,19 @@ session_start();
                     <?php
                     $No = 0;
                     while ($lists_ex = mysqli_fetch_assoc($result_fetch_ex)) {
-                        $No = $No + 1;
                     ?>
                         <tr>
-                            <?php if ($lists_ex['status_ex'] == 1) { ?>
+                            <?php if ($lists_ex['status_ex'] == 1) {
+                                $No = $No + 1;
+                            ?>
                                 <td class="text-center"><?php echo ($No) ?></td>
                                 <td scope="row"><?php echo $lists_ex['name_user_ex']; ?></td>
                                 <td scope="row"><?php echo $lists_ex['name_reward_ex']; ?></td>
                                 <td scope="row"><?php echo $lists_ex['address_user_ex']; ?></td>
                                 <td scope="row">Order</td>
-                                <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-input-track" <?php $_SESSION['id_ex'] = $lists_ex['id_ex_reward']; ?>>Submit</button> </td>
+                                <td><button type="button" id=" <?php echo $lists_ex['id_ex_reward']; ?>" class=" btn btn-info reward_ex_modal_add">Submit</button> </td>
+
                             <?php } ?>
-                            <!-- <td scope="row"><?php #echo $lists_reward['name_reward']; 
-                                                    ?></td>
-                            <td scope="row"><?php #echo $lists_reward['point_exchange_reward']; 
-                                            ?></td>
-                            <td scope="row"><?php #echo $lists_reward['stock_reward']; 
-                                            ?></td>
-                            <td scope="row ">
-                                <button class="btn btn-info reward_edit_modal mr-2" id="<?php #echo $lists_reward['id_reward']; 
-                                                                                        ?>">Edit</button>
-                                <button class="btn btn-danger reward_delete" id="<?php #echo $lists_reward['id_reward']; 
-                                                                                    ?>">Delete</button>
-                            </td> -->
                         </tr>
                     <?php } ?>
                 </tbody>
