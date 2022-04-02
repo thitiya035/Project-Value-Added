@@ -46,9 +46,9 @@ require './src/models/reward_ex_fetch.php';
                                         </td>
                                         <td scope="row ">
                                             <?php echo $lists_ex['track_number_ex'];
-                                            $_SESSION['id_ex'] = $lists_ex['id_ex_reward']; ?>
+                                            ?>
                                         </td>
-                                        <td scope="row "><button class="btn btn-info mr-2 " data-toggle="modal" data-target="#modal-input-track">Edit</button></td>
+                                        <td scope="row "><button class="btn btn-info mr-2 reward_ex_modal_edit" id=" <?php echo $lists_ex['id_ex_reward']; ?>">Edit</button></td>
                                     <?php } ?>
                                 </tr>
                             <?php } ?>

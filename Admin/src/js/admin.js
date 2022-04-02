@@ -289,8 +289,83 @@ $(document).ready(function () {
     });
   });
 
+  $(".reward_ex_modal_add").click(function () {
+    // let track = $(".tracking").val();
+    // var id_ex_reward = $(this).attr("id");
+    let status_ex;
+    var id_ex_reward = $(this).attr("id");
+    // console.log(id_ex);
+    $.ajax({
+      type: "POST",
+      url: "./src/models/reward_ex.php",
+      data: {
+        path_ex: "show_model",
+        id_ex_reward: id_ex_reward,
+      },
+      dataType: "json",
+      success: function (remine) {
+        if (remine.status == "success") {
+          if (remine.status_ex == 1) {
+            status_ex = "Order";
+          } else {
+            status_ex = "Succeed";
+          }
+          $(".name_user_ex").val(remine.name_user_ex);
+          $(".name_reward_ex").val(remine.name_reward_ex);
+          $(".address_user_ex").val(remine.address_user_ex);
+          $(".status_ex").val(status_ex);
+          $(".date_ex").val(remine.date_ex + "  " + remine.time_ex);
+          $("#modal-input-track").modal("show");
+        } else if (remine.status == "fail") {
+          swal({
+            title: remine.title,
+            text: remine.text,
+            icon: remine.icon,
+          });
+        }
+      },
+    });
+  });
+
+  $(".reward_ex_modal_edit").click(function () {
+    let status_ex;
+    var id_ex_reward = $(this).attr("id");
+    $.ajax({
+      type: "POST",
+      url: "./src/models/reward_ex.php",
+      data: {
+        path_ex: "show_model",
+        id_ex_reward: id_ex_reward,
+      },
+      dataType: "json",
+      success: function (remine) {
+        if (remine.status == "success") {
+          if (remine.status_ex == 1) {
+            status_ex = "Order";
+          } else {
+            status_ex = "Succeed";
+          }
+          $(".name_user_ex_edit").val(remine.name_user_ex);
+          $(".name_reward_ex_edit").val(remine.name_reward_ex);
+          $(".address_user_ex_edit").val(remine.address_user_ex);
+          $(".status_ex_edit").val(status_ex);
+          $(".date_ex_edit").val(remine.date_ex + "  " + remine.time_ex);
+          $(".tracking_edit").val(remine.tracking);
+          $("#modal-edit-track").modal("show");
+        } else if (remine.status == "fail") {
+          swal({
+            title: remine.title,
+            text: remine.text,
+            icon: remine.icon,
+          });
+        }
+      },
+    });
+  });
+
   $(".add_tracking").click(function () {
     var track = $(".tracking").val();
+
     $.ajax({
       type: "POST",
       url: "./src/models/reward_ex.php",
@@ -306,10 +381,53 @@ $(document).ready(function () {
           icon: remine.icon,
         }).then(() => {
           location.reload();
-          // $("#modal-history-ex-reward").modal("show");
-          // $("#modal-input-track").modal("hide");
         });
       },
     });
   });
+
+  $(".edit_tracking").click(function () {
+    var track_edit = $(".tracking_edit").val();
+
+    $.ajax({
+      type: "POST",
+      url: "./src/models/reward_ex.php",
+      data: {
+        path_ex: "add_track",
+        track: track_edit,
+      },
+      dataType: "json",
+      success: function (remine) {
+        swal({
+          title: remine.title,
+          text: remine.text,
+          icon: remine.icon,
+        }).then(() => {
+          location.reload();
+        });
+      },
+    });
+  });
+
+  // $(".product_type_edit").click(function () {
+  //   var track = $(".tracking").val();
+  //   $.ajax({
+  //     type: "POST",
+  //     url: "./src/models/reward_ex.php",
+  //     data: {
+  //       path_ex: "add_track",
+  //       track: track,
+  //     },
+  //     dataType: "json",
+  //     success: function (remine) {
+  //       swal({
+  //         title: remine.title,
+  //         text: remine.text,
+  //         icon: remine.icon,
+  //       }).then(() => {
+  //         location.reload();
+  //       });
+  //     },
+  //   });
+  // });
 });

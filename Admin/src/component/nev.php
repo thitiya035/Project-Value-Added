@@ -16,8 +16,7 @@
                 <a class="nav-link dropdown-toggle btn_product_menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="product.php">Product lists</a>
-                    <a class="dropdown-item" href="size_product.php">Size of product</a>
-                    <a class="dropdown-item" href="type_product.php">Type of product</a>
+                    <a class="dropdown-item" href="produc_typet.php">Type of product</a>
                 </div>
             </li>
 
@@ -30,7 +29,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link btn_setting_menu" href="setting.php">LineNotifly</a>
+                <a class="nav-link btn_setting_menu" href="setting.php">Setting</a>
             </li>
         </ul>
         <ul class="navbar-nav mr-right">

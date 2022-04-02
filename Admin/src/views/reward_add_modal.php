@@ -30,7 +30,7 @@
                             <input type="number" class="form-control point_ex_reward" name="point_ex_reward" aria-label="Point Exchange Reward">
                         </div>
                     </div>
-                    <div class="col-12 mt-4">
+                    <!-- <div class="col-12 mt-4">
                         <label for="inputfullname" class="form-label ">File Img &nbsp;&nbsp;</label>
                         <input type="file" class="file_reward" name="file_reward" onchange="encodeImageFileAsURL(this)"  />
                         <script>
@@ -43,7 +43,7 @@
                                 reader.readAsDataURL(file);
                             }
                         </script>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="modal-footer">
