@@ -1,5 +1,7 @@
 <?php
-
+if (!empty($_SESSION['id_user'])) {
+    header('Location:profile.php');
+}
 $header = "Reward Item | Admin";
 include "./src/component/header.php";
 include "./src/component/nev.php";
