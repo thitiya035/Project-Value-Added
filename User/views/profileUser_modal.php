@@ -1,7 +1,8 @@
 <?php
-require_once './User/models/profileUser.php';
-require_once './User/views/edit_profile_modal.php';
+require './User/models/profileUser.php';
+require './User/views/edit_profile_modal.php';
 require './User/views/history_ex_modal.php';
+require './User/views/edit_password_modal.php';
 ?>
 
 <div class="container mt-3 float-right">

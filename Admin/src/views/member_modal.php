@@ -58,7 +58,7 @@ require './src/models/member_fetch.php';
                                                     // echo $lists_user['id_permission_user']; 
                                                     ?></td>
                             <td>
-                                <button class="btn btn-info btn_edit_detail_user" id="<?php echo $lists_user['id_user']; ?>">Edit</button>
+                                <button class="btn btn-info member_edit_modal" id="<?php echo $lists_user['id_user']; ?>">Edit</button>
                                 <button class="btn btn-danger member_delete" id="<?php echo $lists_user['id_user']; ?>">Delete</button>
                             </td>
                         </tr>

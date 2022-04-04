@@ -143,6 +143,70 @@ $(document).ready(function () {
       },
     });
   });
+  $(".member_edit_modal").click(function () {
+    id_member = $(this).attr("id");
+    $.ajax({
+      type: "POST",
+      url: "./src/models/member.php",
+      data: {
+        path_member: "show_model",
+        id_member: id_member,
+      },
+      dataType: "json",
+      success: function (remine) {
+        if (remine.status == "success") {
+          $(".member_edit").val(remine.id_member);
+          $(".firstname_edit").val(remine.firstname);
+          $(".lastname_edit").val(remine.lastname);
+          $(".email_edit").val(remine.email);
+          $(".address_edit").val(remine.address);
+          $(".phone_edit").val(remine.phone);
+          $(".point_edit").val(remine.point);
+          $(".id_permission_edit").val(remine.id_permission);
+          $("#modal-edit-member").modal("show");
+        } else {
+          swal({
+            title: remine.title,
+            text: remine.text,
+            icon: remine.icon,
+          });
+        }
+      },
+    });
+  });
+  $(".member_edit").click(function () {
+    let id_member = $(".member_edit").val();
+    let firstname = $(".firstname_edit").val();
+    let lastname = $(".lastname_edit").val();
+    let email = $(".email_edit").val();
+    let address = $(".address_edit").val();
+    let id_permission = $(".id_permission_edit").val();
+    $.ajax({
+      type: "POST",
+      url: "./src/models/member.php",
+      data: {
+        path_member: "member_edit",
+        id_member: id_member,
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        address: address,
+        id_permission: id_permission,
+      },
+      dataType: "json",
+      success: function (remine) {
+        swal({
+          title: remine.title,
+          text: remine.text,
+          icon: remine.icon,
+        }).then(() => {
+          if (remine.status == "success") {
+            location.reload();
+          }
+        });
+      },
+    });
+  });
   $(".member_delete").click(function () {
     var id_user = $(this).attr("id");
     swal({
@@ -288,7 +352,6 @@ $(document).ready(function () {
       },
     });
   });
-
   $(".reward_ex_modal_add").click(function () {
     // let track = $(".tracking").val();
     // var id_ex_reward = $(this).attr("id");
@@ -326,7 +389,6 @@ $(document).ready(function () {
       },
     });
   });
-
   $(".reward_ex_modal_edit").click(function () {
     let status_ex;
     var id_ex_reward = $(this).attr("id");
@@ -362,7 +424,6 @@ $(document).ready(function () {
       },
     });
   });
-
   $(".add_tracking").click(function () {
     var track = $(".tracking").val();
 
@@ -385,7 +446,6 @@ $(document).ready(function () {
       },
     });
   });
-
   $(".edit_tracking").click(function () {
     var track_edit = $(".tracking_edit").val();
 
