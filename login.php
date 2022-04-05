@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!empty($_SESSION['id_user'])) {
-    if ($_SESSION['permission'] = "admin") {
+    if ($_SESSION['permission'] == "admin") {
         header('Location:./Admin/home.php');
     } else {
         header('Location:profile.php');

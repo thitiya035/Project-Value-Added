@@ -27,7 +27,6 @@ require './User/models/reward.php';
                 <table class="col">
                     <tbody>
                         <tr>
-                            <th class="col-2 "><?php echo '<img src="data:image;base64,' . base64_encode($result_fetch['img_reward']) . '">'; ?></th>
                             <td class="col-4" style="background-color:#fafcb4; height: 100px;">
                                 <h2 class="text-center"><?php echo $result_fetch['name_reward']; ?></h2>
                             </td>

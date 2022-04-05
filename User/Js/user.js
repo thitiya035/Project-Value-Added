@@ -20,7 +20,7 @@ $(document).ready(function () {
   $(".login").click(function () {
     var userphone = $(".userphone").val();
     var password = $(".password").val();
-    console.log(userphone + "," + password);
+    // console.log(userphone + "," + password);
     $.ajax({
       type: "POST",
       url: "./User/models/login.php",
@@ -75,7 +75,7 @@ $(document).ready(function () {
       dataType: "json",
       success: function (remine) {
         if (remine.status == "success") {
-          // console.log("session is " + remine.session);
+          console.log("session is " + remine.session);
           swal({
             title: remine.title,
             text: remine.text,

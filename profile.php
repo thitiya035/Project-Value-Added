@@ -3,7 +3,7 @@ session_start();
 if (empty($_SESSION['id_user'])) {
     header('Location:login.php');
 } else {
-    if ($_SESSION['permission'] = "admin") {
+    if ($_SESSION['permission'] == "admin") {
         header('Location:./Admin/home.php');
     }
 }
