@@ -5,6 +5,6 @@ if (!empty($_SESSION['id_user'])) {
 $header = "Type Of Product | Admin";
 include "./src/component/header.php";
 include "./src/component/nev.php";
-include "./src/views/product_type_modal.php.php";
-// include "./src/views/product_add_modal.php";
+include "./src/views/product_type_modal.php";
+include "./src/views/product_type_edit_point.php";
 include "./src/component/footage.php";

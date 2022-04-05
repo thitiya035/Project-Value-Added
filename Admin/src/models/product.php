@@ -51,7 +51,7 @@ switch ($path) {
                 "status" => "success",
                 "title" => "Success!",
                 "icon" => "success",
-                "text" => "Delete user success"
+                "text" => "Delete product success"
             ];
         } else {
             $remine = [
@@ -59,6 +59,62 @@ switch ($path) {
                 "title" => "Error!",
                 "icon" => "error",
                 "text" => "Error deleting product from database",
+            ];
+        }
+        break;
+    case "show_edit_modal":
+        $id_product_mo = $_POST['id_product'];
+
+        $db_search_product = "SELECT * FROM product WHERE id_product ='$id_product_mo'";
+        $search_product = mysqli_query($dbcon, $db_search_product);
+        $result_search_product = mysqli_fetch_assoc($search_product);
+        if ($result_search_product) {
+            $remine = [
+                "status" => "success",
+                "id_product_ed" =>  $id_product_mo,
+                "id_barcode_ed" => $result_search_product['id_barcode_product'],
+                "name_product_thai_ed" => $result_search_product['name_product_thai'],
+                "name_product_eng_ed" => $result_search_product['name_product_eng'],
+                "brand_product_ed" => $result_search_product['brand_product'],
+                "size_ed" => $result_search_product['size_product'],
+                "id_type_product_ed" => $result_search_product['id_type_product']
+            ];
+        } else {
+            $remine = [
+                "status" => "can't contact database",
+                "title" => "Fail!",
+                "text" => "Fail show product \n Can't contact database",
+                "icon" => "error"
+            ];
+        }
+        break;
+    case "edit_product":
+        $id_product_ed = $_POST['id_product_ed'];
+        $id_barcode_ed = $_POST['id_barcode_ed'];
+        $name_product_thai_ed = $_POST['name_product_thai_ed'];
+        $name_product_eng_ed = $_POST['name_product_eng_ed'];
+        $brand_product_ed = $_POST['brand_product_ed'];
+        $size_ed = $_POST['size_ed'];
+        $id_type_product_ed = $_POST['id_type_product_ed'];
+
+        $db_update_product = "UPDATE product SET id_barcode_product ='$id_barcode_ed',
+                            name_product_thai ='$name_product_thai_ed',name_product_eng ='$name_product_eng_ed',
+                            brand_product ='$brand_product_ed',size_product ='$size_ed',id_type_product ='$id_type_product_ed' 
+                            WHERE id_product = '$id_product_ed'";
+        $update_product = mysqli_query($dbcon, $db_update_product);
+        if ($update_product) {
+            $remine = [
+                "status" => "success",
+                "title" => "Success!",
+                "icon" => "success",
+                "text" => "Edit product success"
+            ];
+        } else {
+            $remine = [
+                "status" => "can't contact database",
+                "title" => "Fail!",
+                "text" => "Fail edit product \n Can't contact database",
+                "icon" => "error"
             ];
         }
         break;

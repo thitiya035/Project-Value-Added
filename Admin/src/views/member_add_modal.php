@@ -64,7 +64,7 @@
                                     <i class="fas fa-phone"></i>
                                 </span>
                             </div>
-                            <input type="number" class="form-control phone" name="phone" placeholder="Phone number" aria-label="Phone" maxlength="10" pattern="[0-9\s\d]{10}$" required>
+                            <input type="text" class="form-control phone" name="phone" placeholder="Phone number" aria-label="Phone" maxlength="10" pattern="[0-9\s\d]{10}$" required>
                         </div>
                     </div>
                     <div class="col-12">

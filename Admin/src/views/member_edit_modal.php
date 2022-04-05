@@ -64,7 +64,7 @@
                                     <i class="fas fa-phone"></i>
                                 </span>
                             </div>
-                            <input type="text" class="form-control phone" name="phone" placeholder="Phone number" aria-label="Phone" disabled>
+                            <input type="text" class="form-control phone_edit" name="phone" placeholder="Phone number" aria-label="Phone" disabled>
                         </div>
                     </div>
                     <div class="col-12">
@@ -75,7 +75,7 @@
                                     <i class="fas fa-splotch"></i>
                                 </span>
                             </div>
-                            <input type="text" class="form-control point" name="point" aria-label="point" disabled>
+                            <input type="text" class="form-control point_edit" name="point" aria-label="point" disabled>
                         </div>
                     </div>
                     <div class="col-12">
