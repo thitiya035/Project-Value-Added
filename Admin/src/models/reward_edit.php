@@ -12,7 +12,8 @@ switch ($path) {
             $remine = [
                 "status" => "success",
                 "name_reward_edit" => $result['name_reward'],
-                "point_ex_reward_edit" => $result['point_exchange_reward']
+                "point_ex_reward_edit" => $result['point_exchange_reward'],
+                "stock_ex_reward_edit" => $result['stock_reward']
             ];
         } else {
             $remine = [
@@ -27,7 +28,9 @@ switch ($path) {
         $id_reward = $_POST['id_reward'];
         $name_reward_edit = $_POST['name_reward_edit'];
         $point_ex_reward_edit = $_POST['point_ex_reward_edit'];
-        $update_reward = "UPDATE reward SET name_reward = '$name_reward_edit', point_exchange_reward = '$point_ex_reward_edit' WHERE id_reward = '$id_reward'";
+        $stock_ex_reward_edit = $_POST['stock_ex_reward_edit'];
+        $update_reward = "UPDATE reward SET name_reward = '$name_reward_edit', point_exchange_reward = '$point_ex_reward_edit', stock_reward ='$stock_ex_reward_edit'
+                          WHERE id_reward = '$id_reward'";
         $result_update_reward = mysqli_query($dbcon, $update_reward);
         if ($result_update_reward) {
             $remine = [

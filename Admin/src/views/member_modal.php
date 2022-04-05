@@ -26,7 +26,7 @@ require './src/models/member_fetch.php';
             <table class="table table-bordered shadow">
                 <thead>
                     <tr class="text-center">
-                        <th scope="col">No</th>
+                        <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;ID&nbsp;&nbsp;&nbsp;&nbsp;</th>
                         <th scope="col">Name</th>
                         <th scope="col">Address</th>
                         <th scope="col">E-mail</th>
@@ -40,10 +40,9 @@ require './src/models/member_fetch.php';
                     <?php
                     $No = 0;
                     while ($lists_user = mysqli_fetch_assoc($result_fetch_lists)) {
-                        $No = $No + 1;
                     ?>
                         <tr>
-                            <td class="text-center"><?php echo ($No) ?></td>
+                            <td class="text-center"><?php echo $lists_user['id_user'] ?></td>
                             <td><?php echo $lists_user['firstname_user'] . '&nbsp;&nbsp;&nbsp;' .  $lists_user['lastname_user']; ?></td>
                             <td><?php echo $lists_user['address_user']; ?></td>
                             <td><?php echo $lists_user['email_user']; ?></td>
@@ -58,7 +57,7 @@ require './src/models/member_fetch.php';
                                                     // echo $lists_user['id_permission_user']; 
                                                     ?></td>
                             <td>
-                                <button class="btn btn-info btn_edit_detail_user" id="<?php echo $lists_user['id_user']; ?>">Edit</button>
+                                <button class="btn btn-info member_edit_modal" id="<?php echo $lists_user['id_user']; ?>">Edit</button>
                                 <button class="btn btn-danger member_delete" id="<?php echo $lists_user['id_user']; ?>">Delete</button>
                             </td>
                         </tr>

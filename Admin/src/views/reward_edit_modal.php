@@ -9,25 +9,37 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-9">
+                    <div class="col-12">
                         <label for="inputfullname" class="form-label">Name Product Reward</label>
                     </div>
-                    <div class="col-3">
-                        <label for="inputfullname" class="form-label">Point to exchange</label>
-                    </div>
-                    <div class="form-group col-md-9 mt-2">
+                    <div class="form-group col-md-12 mt-2">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <i class="far fa-clipboard"></i>
                                 </span>
                             </div>
-                            <input type="text" class="form-control name_reward_edit" name="name_reward_edit" >
+                            <input type="text" class="form-control name_reward_edit" name="name_reward_edit">
                         </div>
                     </div>
-                    <div class="form-group col-md-3 mt-2">
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label class="form-label">Point to exchange</label>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Stock</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mt-2">
                         <div class="input-group ">
-                            <input type="number" class="form-control point_ex_reward_edit" name="point_ex_reward_edit" >
+                            <input type="number" class="form-control point_ex_reward_edit" name="point_ex_reward_edit">
+                        </div>
+                    </div>
+                    <div class="col-6 mt-2">
+                        <div class="input-group ">
+                            <input type="number" class="form-control stock_ex_reward_edit" name="stock_ex_reward_edit">
                         </div>
                     </div>
                 </div>

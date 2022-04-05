@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2022 at 11:34 AM
+-- Generation Time: Apr 05, 2022 at 09:44 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -170,7 +170,8 @@ INSERT INTO `log_exchange_point` (`id_user`, `group_step`, `id_product`, `name_p
 (67, 'Sensor', 'Unknow', 'Unknow', 'clear', 20, '23/03/2022', '15:00:02'),
 (59, 'Sensor', 'Unknow', 'Unknow', 'opaque', 10, '23/03/2022', '15:09:17'),
 (59, 'Sensor', 'Unknow', 'Unknow', 'can', 50, '23/03/2022', '15:09:57'),
-(1, 'Sensor', 'Unknow', 'Unknow', 'can', 50, '25/03/2022', '09:43:32');
+(1, 'Sensor', 'Unknow', 'Unknow', 'can', 50, '25/03/2022', '09:43:32'),
+(1, 'barcode', '4', 'Sing', 'can', 50, '06/04/2022', '02:00:57');
 
 -- --------------------------------------------------------
 
@@ -180,6 +181,7 @@ INSERT INTO `log_exchange_point` (`id_user`, `group_step`, `id_product`, `name_p
 
 CREATE TABLE `log_exchange_reward` (
   `id_ex_reward` int(10) NOT NULL,
+  `id_user` int(10) NOT NULL,
   `name_user_ex` varchar(255) NOT NULL,
   `name_reward_ex` varchar(255) NOT NULL,
   `address_user_ex` varchar(255) NOT NULL,
@@ -193,9 +195,10 @@ CREATE TABLE `log_exchange_reward` (
 -- Dumping data for table `log_exchange_reward`
 --
 
-INSERT INTO `log_exchange_reward` (`id_ex_reward`, `name_user_ex`, `name_reward_ex`, `address_user_ex`, `track_number_ex`, `status_ex`, `date_ex`, `time_ex`) VALUES
-(1, 'test test1', 'teddy bear hug', '46 หมู่13 Lampang', '', 1, '31/03/2022', '01:12:24'),
-(2, 'test test1', 'bag bear hug', '46 หมู่13 Lampang', ' 1234567890123', 2, '31/03/2022', '01:16:57');
+INSERT INTO `log_exchange_reward` (`id_ex_reward`, `id_user`, `name_user_ex`, `name_reward_ex`, `address_user_ex`, `track_number_ex`, `status_ex`, `date_ex`, `time_ex`) VALUES
+(9, 59, 'singha manowang', 'bag bear hug', '-', '', 1, '02/04/2022', '17:48:10'),
+(10, 59, 'singha manowang', 'teddy bear hug', '-', ' 1234567890123', 2, '02/04/2022', '17:48:13'),
+(11, 75, 'test1 test1', 'teddy bear hug', '', ' 5555555555555', 2, '02/04/2022', '17:48:40');
 
 -- --------------------------------------------------------
 
@@ -255,7 +258,6 @@ CREATE TABLE `reward` (
   `id_reward` int(2) NOT NULL,
   `description_reward` text NOT NULL,
   `name_reward` varchar(255) NOT NULL,
-  `img_reward` varchar(255) CHARACTER SET utf8 NOT NULL,
   `point_exchange_reward` int(5) NOT NULL,
   `stock_reward` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -264,10 +266,10 @@ CREATE TABLE `reward` (
 -- Dumping data for table `reward`
 --
 
-INSERT INTO `reward` (`id_reward`, `description_reward`, `name_reward`, `img_reward`, `point_exchange_reward`, `stock_reward`) VALUES
-(1, '', 'teddy bear hug', '', 10, 7),
-(2, '', 'bag bear hug', '', 20, 0),
-(3, '', 'bear cap', '', 30, 0);
+INSERT INTO `reward` (`id_reward`, `description_reward`, `name_reward`, `point_exchange_reward`, `stock_reward`) VALUES
+(1, '', 'teddy bear hug', 10, 8),
+(2, '', 'bag bear hug', 50, 4),
+(3, '', 'bear cap', 200, 5);
 
 -- --------------------------------------------------------
 
@@ -292,24 +294,6 @@ INSERT INTO `stock` (`id_type_product`, `number`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `token_line`
---
-
-CREATE TABLE `token_line` (
-  `id_admin` varchar(50) NOT NULL,
-  `token` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `token_line`
---
-
-INSERT INTO `token_line` (`id_admin`, `token`) VALUES
-('1', 'f7ChVANJchxKCa2OdGAOWGsNF7UGLpGMK1KsZloqoJ4');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `type_product`
 --
 
@@ -325,7 +309,7 @@ CREATE TABLE `type_product` (
 --
 
 INSERT INTO `type_product` (`id_type_product`, `name_eng_type_product`, `name_th_type_product`, `point_of_type`) VALUES
-(1, 'clear', 'ขวดพลาสติกใส', 20),
+(1, 'clear', 'ขวดพลาสติกใส', 25),
 (2, 'opaque', 'ขวดพลาสติกขุ่น', 10),
 (3, 'can', 'กระป๋องอะลุมิเนียม', 50);
 
@@ -363,7 +347,6 @@ CREATE TABLE `user` (
   `address_user` varchar(255) NOT NULL,
   `email_user` varchar(255) NOT NULL,
   `total_point_user` int(5) NOT NULL,
-  `img_user` varchar(255) NOT NULL,
   `id_permission_user` int(1) NOT NULL COMMENT 'foreign key'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -371,11 +354,11 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `phone_user`, `password_user`, `firstname_user`, `lastname_user`, `address_user`, `email_user`, `total_point_user`, `img_user`, `id_permission_user`) VALUES
-(1, '0827585492', '1234', 'thitiya', 'manowang', '55 ถ.ห้วยแก้ว ต.สุเทพ อ.เมือง จ.เชียงใหม่ 50200', 'thitiya861@gmail.com', 430, '', 1),
-(44, '0932746116', 'pass', 'test', 'test1', '46 หมู่13 Lampang', 'thitiya861@gmail.com', 1060, '', 2),
-(59, '0861177428', '5555', 'singha', 'manowang', '-', 'singha@gmail.com', 270, '', 2),
-(75, '12345', 'test1', 'test1', 'test1', '', 'test1', 0, '', 2);
+INSERT INTO `user` (`id_user`, `phone_user`, `password_user`, `firstname_user`, `lastname_user`, `address_user`, `email_user`, `total_point_user`, `id_permission_user`) VALUES
+(1, '0827585492', 'admin', 'thitiya', 'manowang', '55 ถ.ห้วยแก้ว ต.สุเทพ อ.เมือง จ.เชียงใหม่ 50200', 'thitiya861@gmail.com', 430, 1),
+(44, '0932746116', '1234', 'test1', 'test1', '46 หมู่13 Lampang ', 'thitiya035.7@gmail.com', 920, 2),
+(59, '0861177428', '5555', 'singha', 'manowang', 'Lampang', 'singha@gmail.com', 165, 2),
+(75, '0811111111', 'test1', 'test1', 'test1', 'test1', 'test1@hotmail.com', 15, 2);
 
 --
 -- Indexes for dumped tables
@@ -407,12 +390,6 @@ ALTER TABLE `stock`
   ADD PRIMARY KEY (`id_type_product`);
 
 --
--- Indexes for table `token_line`
---
-ALTER TABLE `token_line`
-  ADD PRIMARY KEY (`id_admin`);
-
---
 -- Indexes for table `type_product`
 --
 ALTER TABLE `type_product`
@@ -438,13 +415,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `log_exchange_reward`
 --
 ALTER TABLE `log_exchange_reward`
-  MODIFY `id_ex_reward` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_ex_reward` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=31;
+  MODIFY `id_product` int(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `reward`
@@ -456,7 +433,7 @@ ALTER TABLE `reward`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=76;
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=78;
 
 --
 -- Constraints for dumped tables
@@ -472,5 +449,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
--- test

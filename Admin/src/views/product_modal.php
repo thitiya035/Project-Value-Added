@@ -48,7 +48,7 @@ require './src/models/product_fetch.php';
                             <td scope="row"><?php echo $lists_product['name_th_type_product']; ?></td>
                             <td scope="row" class="text-center"><?php echo $lists_product['size_product']; ?></td>
                             <td scope="row" class="text-center">
-                                <button class="btn btn-info " id="<?php echo $lists_product['id_product']; ?>">Edit</button>
+                                <button class="btn btn-info product_edit_modal" id="<?php echo $lists_product['id_product']; ?>">Edit</button>
                                 <button class="btn btn-danger product_delete" id="<?php echo $lists_product['id_product']; ?>">Delete</button>
                             </td>
                         </tr>

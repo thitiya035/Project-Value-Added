@@ -2,10 +2,11 @@
     <div class="modal-dialog modal-lg modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ModalLongTitle">Edit Profile</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title ml-2" id="ModalLongTitle">Edit Profile </h5>
+                <button type="button" id="formsubmit" name="btn_password" class="btn btn-danger float-right edit_password_modal">Edit password</button>
+                <!-- <button type="button" class="close " data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                </button>
+                </button> -->
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -41,32 +42,6 @@
                                 </span>
                             </div>
                             <input type="text" class="form-control email" name="email" value="<?php echo ($detail_user['email_user']) ?>" aria-label="Email">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <label for="inputpassword" class="form-label">Old Password</label>
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-key"></i>
-                                    </span>
-                                </div>
-                                <input type="password" class="form-control oldpassword" placeholder="Enter old password" rows="3" cols="30" name="oldpassword" aria-label="Password"></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <label for="inputpassword" class="form-label">New Password</label>
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-key"></i>
-                                    </span>
-                                </div>
-                                <input type="password" class="form-control newpassword" placeholder="Enter new password" rows="3" cols="30" name="newpassword" aria-label="Password"></input>
-                            </div>
                         </div>
                     </div>
                     <div class="col-12">

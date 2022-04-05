@@ -9,7 +9,7 @@ require_once './User/views/register_modal.php';
         <div class="col-centered ">
             <div class="form-group">
                 <label for="userphone" class="text">Phone</label>
-                <input type="tel" class="form-control userphone" id="userphone" placeholder="Enter your phone number" name="userphone" pattern="[0-9]{10}"required>
+                <input type="tel" class="form-control userphone" id="userphone" placeholder="Enter your phone number" name="userphone" pattern="[0-9]{10}" maxlength="10" required>
                 <small id="passwordHelpBlock" class="form-text text-muted">
                     Your Phone number must be 10 number.
                 </small>

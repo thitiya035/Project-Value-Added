@@ -20,7 +20,7 @@ $(document).ready(function () {
   $(".login").click(function () {
     var userphone = $(".userphone").val();
     var password = $(".password").val();
-    console.log(userphone + "," + password);
+    // console.log(userphone + "," + password);
     $.ajax({
       type: "POST",
       url: "./User/models/login.php",
@@ -98,39 +98,29 @@ $(document).ready(function () {
     var firstname = $(".firstname").val();
     var lastname = $(".lastname").val();
     var email = $(".email").val();
-    var oldpassword = $(".oldpassword").val();
-    var newpassword = $(".newpassword").val();
     var address = $(".address").val();
 
     $.ajax({
       type: "POST",
       url: "./User/models/edit_profile.php",
       data: {
-        submit_edit_user: true,
+        path: "edit_user",
         firstname: firstname,
         lastname: lastname,
         email: email,
-        oldpassword: oldpassword,
-        newpassword: newpassword,
         address: address,
       },
       dataType: "json",
       success: function (remine) {
-        if (remine.status == "success") {
-          swal({
-            title: remine.title,
-            text: remine.text,
-            icon: remine.icon,
-          }).then((confirm) => {
+        swal({
+          title: remine.title,
+          text: remine.text,
+          icon: remine.icon,
+        }).then(() => {
+          if (remine.status == "success") {
             location.reload();
-          });
-        } else if (remine.status == "wrongpass") {
-          swal({
-            title: remine.title,
-            text: remine.text,
-            icon: remine.icon,
-          });
-        }
+          }
+        });
       },
     });
   });
@@ -163,6 +153,41 @@ $(document).ready(function () {
           },
         });
       }
+    });
+  });
+
+  $(".edit_password_modal").click(function () {
+    $("#modal-user-edit-profile").modal("hide");
+    $("#modal-edit-password").modal("show");
+  });
+
+  $(".edit_passward").click(function () {
+    let old_password = $(".old_password").val();
+    let new_password = $(".new_password").val();
+    let confirm_password = $(".confirm_password").val();
+    // console.log(old_password);
+    // console.log(new_password);
+    // console.log(confirm_mpassword);
+    $.ajax({
+      type: "POST",
+      url: "./User/models/edit_profile.php",
+      data: {
+        path: "edit_password",
+        old_password: old_password,
+        new_password: new_password,
+        confirm_password: confirm_password,
+      },
+      dataType: "json",
+      success: function (remine) {
+        swal({
+          title: remine.title,
+          text: remine.text,
+          icon: remine.icon,
+        }).then(() => {
+          if (remine.status == "success")
+            $("#modal-edit-password").modal("hide");
+        });
+      },
     });
   });
 });

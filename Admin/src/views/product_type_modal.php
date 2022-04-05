@@ -23,8 +23,8 @@ require './src/models/product_fetch.php';
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Name of reward (Eng)</th>
-                        <th scope="col">Name of reward(Thai)</th>
+                        <th scope="col">Type of product name (Eng)</th>
+                        <th scope="col">Type of product name (Thai)</th>
                         <th scope="col">Point</th>
 
 
@@ -39,9 +39,9 @@ require './src/models/product_fetch.php';
                         <tr>
                             <td class="text-center"><?php echo ($No) ?></td>
                             <td scope="row"><?php echo $lists_type_reward['name_eng_type_product']; ?></td>
-                            <td scope="row"><?php echo $lists_type_reward['name_th_type_product']; ?></td>
+                            <td scope="row "><?php echo $lists_type_reward['name_th_type_product']; ?></td>
                             <td scope="row"><?php echo $lists_type_reward['point_of_type']; ?>
-                                <button class="btn btn-info mr-2 float-right product_type_edit" id="<?php echo $lists_reward['id_type_product']; ?>">Edit</button> <!-- here -->
+                                <button class="btn btn-info mr-2 float-right type_product_point_modal" id="<?php echo $lists_type_reward['id_type_product']; ?>">Edit</button> <!-- here -->
                             </td>
                         </tr>
                     <?php } ?>

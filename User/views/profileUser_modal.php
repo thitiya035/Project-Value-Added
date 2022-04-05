@@ -1,20 +1,19 @@
 <?php
-require_once './User/models/profileUser.php';
-require_once './User/views/edit_profile_modal.php';
+require './User/models/profileUser.php';
+require './User/views/edit_profile_modal.php';
+require './User/views/history_ex_modal.php';
+require './User/views/edit_password_modal.php';
 ?>
 
-<!-- <div>
-    <nav class="nav justify-content-end">
-        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#ModalCenter">
-            <span class="fas fa-cog" style="color:black"></span>
-        </button>
-</div> -->
+<div class="container mt-3 float-right">
+    <button class="btn btn-dark btn-lg float-right mr-3 col-2 " data-toggle="modal" data-target="#modal-history-ex-reward">History</button>
+</div>
 <div class="container d-flex justify-content-center">
     <div class="circle-bg">
         <div class="h1" style="font-size: 4rem;">
-            <?php echo $detail_user['total_point_user'] ?> 
+            <?php echo $detail_user['total_point_user'] ?>
         </div>
-        <h2  style="font-size: 2rem;" >Point</h2>
+        <h2 style="font-size: 2rem;">Point</h2>
     </div>
 </div>
 
@@ -28,7 +27,7 @@ require_once './User/views/edit_profile_modal.php';
                 <tbody>
                     <tr class="text-uppercase">
                         <th scope="col">Name</th>
-                        <td><?php echo ($detail_user['firstname_user']) .'&nbsp;&nbsp;&nbsp;'. ($detail_user['lastname_user'] ); ?></td>
+                        <td><?php echo ($detail_user['firstname_user']) . '&nbsp;&nbsp;&nbsp;' . ($detail_user['lastname_user']); ?></td>
                     </tr>
                     <tr>
                         <th scope="col">Address</th>

@@ -1,8 +1,8 @@
-<div class="modal fade" id="modal-add-member" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modal-edit-member" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ModalLongTitle">Add Member</h5>
+                <h5 class="modal-title" id="ModalLongTitle">Edit Member</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -19,7 +19,7 @@
                                     <i class="fas fa-user"></i>
                                 </span>
                             </div>
-                            <input type="text" class="form-control firstname" name="firstname" placeholder="First name" aria-label="First name">
+                            <input type="text" class="form-control firstname_edit" name="firstname" placeholder="First name" aria-label="First name">
                         </div>
                     </div>
                     <div class="form-group col-md-6">
@@ -29,7 +29,7 @@
                                     <i class="far fa-user"></i>
                                 </span>
                             </div>
-                            <input type="text" class="form-control lastname" name="lastname" placeholder="Last name" aria-label="Last name">
+                            <input type="text" class="form-control lastname_edit" name="lastname" placeholder="Last name" aria-label="Last name">
                         </div>
                     </div>
                     <div class="col-12">
@@ -40,7 +40,7 @@
                                     <i class="fas fa-envelope"></i>
                                 </span>
                             </div>
-                            <input type="text" class="form-control email" name="email" placeholder="email@example.com" aria-label="Email">
+                            <input type="text" class="form-control email_edit" name="email" placeholder="email@example.com" aria-label="Email">
                         </div>
                     </div>
                     <div class="col-12">
@@ -52,7 +52,7 @@
                                         <i class="fas fa-home"></i>
                                     </span>
                                 </div>
-                                <textarea class="form-control address" rows="3" cols="30" name="address" placeholder="Address.." aria-label="Address"></textarea>
+                                <textarea class="form-control address_edit" rows="3" cols="30" name="address" placeholder="Address.." aria-label="Address"></textarea>
                             </div>
                         </div>
                     </div>
@@ -64,30 +64,18 @@
                                     <i class="fas fa-phone"></i>
                                 </span>
                             </div>
-                            <input type="text" class="form-control phone" name="phone" placeholder="Phone number" aria-label="Phone" maxlength="10" pattern="[0-9\s\d]{10}$" required>
+                            <input type="text" class="form-control phone_edit" name="phone" placeholder="Phone number" aria-label="Phone" disabled>
                         </div>
                     </div>
                     <div class="col-12">
-                        <label for="inputpassword" class="form-label">Password</label>
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-lock"></i>
-                                    </span>
-                                </div>
-                                <input type="password" class="form-control password" name="repassword" placeholder="Password" aria-label="Password">
+                        <label for="show_point" class="form-label">Total Point</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-splotch"></i>
+                                </span>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-lock"></i>
-                                    </span>
-                                </div>
-                                <input type="password" class="form-control con_password" name="con_repassword" placeholder="Confirm Password" aria-label="Password">
-                            </div>
+                            <input type="text" class="form-control point_edit" name="point" aria-label="point" disabled>
                         </div>
                     </div>
                     <div class="col-12">
@@ -98,7 +86,7 @@
                                     <i class="fas fa-tag"></i>
                                 </span>
                             </div>
-                            <select class="form-control id_permission">
+                            <select class="form-control id_permission_edit">
                                 <option value="2">User</option>
                                 <option value="1">Admin</option>
                             </select>
@@ -108,7 +96,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" id="formsubmit" name="submit" class="btn btn-primary member_add">Save changes</button>
+                <button type="submit" id="formsubmit" name="submit" class="btn btn-primary member_edit">Save changes</button>
             </div>
         </div>
     </div>

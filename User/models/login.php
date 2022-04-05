@@ -1,6 +1,6 @@
 <?php
 require '../../Mysql/Connect.php';
-    // require './Mysql/Connect.php';
+// require './Mysql/Connect.php';
 
 if ($_POST['submit_login']) {
     $userphone = $_POST['userphone'];
@@ -15,12 +15,14 @@ if ($_POST['submit_login']) {
     if ($count != 0) {
         session_start();
         $_SESSION['id_user'] = $detail['id_user'];
-        if ($detail['id_permission_user'] == "1") {
+        if ($detail['id_permission_user'] == 1) {
+            $_SESSION['permission'] = "admin";
             $remine = [
                 "status" => "success",
                 "permission" => "admin"
             ];
         } else {
+            $_SESSION['permission'] = "user";
             $remine = [
                 "status" => "success",
                 "permission" => "user"
