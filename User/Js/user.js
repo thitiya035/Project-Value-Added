@@ -104,7 +104,7 @@ $(document).ready(function () {
       type: "POST",
       url: "./User/models/edit_profile.php",
       data: {
-        path: "edit_user",
+        path : "edit_user",
         firstname: firstname,
         lastname: lastname,
         email: email,

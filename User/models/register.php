@@ -38,7 +38,7 @@ if ($_POST['submit_register']) {
 
                     $result_search_phone = mysqli_query($dbcon, $search_phone);
                     $detail = mysqli_fetch_assoc($result_search_phone);
-                    
+
                     session_start();
                     $_SESSION['id_user'] = $detail['id_user'];
 
@@ -67,8 +67,6 @@ if ($_POST['submit_register']) {
             ];
         }
     }
-
-    echo json_encode($remine);
 }
-
+echo json_encode($remine);
 mysqli_close($dbcon);

@@ -2,7 +2,6 @@ $(document).ready(function () {
   $(".reward_add").click(function () {
     var name_reward = $(".name_reward").val();
     var point_ex_reward = $(".point_ex_reward").val();
-    var file_reward = localStorage.getItem("img_reward");
     $.ajax({
       type: "POST",
       url: "./src/models/reward_add.php",
@@ -10,7 +9,6 @@ $(document).ready(function () {
         submit_add_reward: true,
         name_reward: name_reward,
         point_ex_reward: point_ex_reward,
-        file_reward: file_reward,
       },
       dataType: "json",
       success: function (remine) {
