@@ -7,7 +7,7 @@ date_default_timezone_set('Asia/Bangkok');
 $date = date("d/m/Y");
 
 
-// $date = "23/03/2022";
+$date = "23/03/2022";
 // echo $date . '<br>';
 
 $q_fetch_topToDay = "SELECT id_user,SUM(point_product) FROM log_exchange_point WHERE date_exchange_point = '$date' GROUP BY id_user ORDER By SUM(point_product) DESC LIMIT 5";
