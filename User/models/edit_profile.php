@@ -11,7 +11,7 @@ $result = mysqli_query($dbcon, $sql);
 $detail_user = mysqli_fetch_assoc($result);
 
 switch ($path) {
-    case 'edit_user':
+    case "edit_user":
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];

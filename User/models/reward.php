@@ -9,7 +9,7 @@ $id_user = $_SESSION['id_user'];
     
     // $row = mysqli_fetch_array($result_fetch_detail_user);
 
-    $sql = "SELECT * FROM reward";
+    $sql = "SELECT * FROM reward ORDER BY point_exchange_reward ASC";
     $result = $dbcon->query($sql);
     
 
