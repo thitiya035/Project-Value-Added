@@ -593,4 +593,10 @@ $(document).ready(function () {
       },
     });
   });
+  $(".btn_graph").click(function () {
+    let select_year = $(".select_year").val();
+    let select_type = $(".select_type").val();
+    console.log(select_year);
+    console.log(select_type);
+  });
 });

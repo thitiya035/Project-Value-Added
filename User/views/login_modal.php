@@ -31,7 +31,7 @@ require_once './User/models/show_point.php';
                     </button>
                 </div>
                 <footer class="">
-                    <p style="font-size: 15px; color:white;"> หากลืม Password สามารถติดต่อ Admin ได้ที่ Email : Thitiya035.7@gmail.com </p>
+                    <p style="font-size: 15px; color:black;"><strong> หากลืม Password สามารถติดต่อ Admin ได้ที่ Email : Thitiya035.7@gmail.com </strong></p>
                 </footer>
             </div>
             <!-- </div> -->
@@ -39,8 +39,8 @@ require_once './User/models/show_point.php';
     </div>
     <div class="col-md-5 col-lg-5">
         <div class="container h-100 mt-3">
-            <div class="mx-auto mt-5">
-                <div class="card shadow rounded h-80  modal-1" style="height: 600px;">
+            <div class="mx-auto mt-5 ">
+                <div class="card shadow rounded h-80" style="height: 600px;background-color: rgba(255, 255, 255, 0.623);">
                     <div class="card-header bg-success text-center">
                         <h3><strong>TOP POINT OF USERS</strong></h3>
                     </div>
