@@ -1,7 +1,57 @@
 <?php
-require './src/models/update_stock.php';
-// require "./src/views/graph_modal.php";
+require "../Mysql/Connect.php";
+
+$q_fetch = "SELECT * FROM stock";
+$result_detail = mysqli_query($dbcon, $q_fetch);
+$i = 0;
+
+while ($obj = mysqli_fetch_object($result_detail)) {
+    $numbers[] =  $obj->number;
+}
+
+$q_year = "SELECT DISTINCT RIGHT(`date_exchange_point`,4) As `year` FROM `log_exchange_point`;";
+$result_year = mysqli_query($dbcon, $q_year);
+
+$q_type = "SELECT name_eng_type_product, `name_th_type_product` FROM `type_product`;";
+$result_type = mysqli_query($dbcon, $q_type);
+
+date_default_timezone_set('Asia/Bangkok');
+$year = date("Y");
+// echo $year;
+
+// statistics (clear)
+for ($q = 1; $q <= 12; $q++) {
+    if ($q <= 9) {
+        $mouth = '0' . $q;
+    } else {
+        $mouth = $q;
+    }
+    $q_count_mouth_clear = "SELECT COUNT(type_product) as `count` FROM `log_exchange_point` WHERE `type_product` = 'clear' AND `date_exchange_point` LIKE '%%/$mouth/$year'";
+    $result_count_mouth_clear = mysqli_query($dbcon, $q_count_mouth_clear);
+    if ($result_count_mouth_clear == '0') {
+        $mouth_clear[$q] = 0;
+    } else {
+        $re_mouth_clear = mysqli_fetch_assoc($result_count_mouth_clear);
+        $mouth_clear[$q] = $re_mouth_clear['count'];
+    }
+    // echo $mouth_clear[$q];
+}
+
+$q_count_mouth_of_year_clear = "SELECT COUNT(type_product) as `count` FROM `log_exchange_point` WHERE `type_product` = 'clear' AND `date_exchange_point` LIKE '%%/%%/$year'";
+$result_count_mouth_of_year_clear = mysqli_query($dbcon, $q_count_mouth_of_year_clear);
+$total_clear = mysqli_fetch_assoc($result_count_mouth_of_year_clear);
+
+$q_count_mouth_of_year_can = "SELECT COUNT(type_product) as `count` FROM `log_exchange_point` WHERE `type_product` = 'can' AND `date_exchange_point` LIKE '%%/%%/$year'";
+$result_count_mouth_of_year_can = mysqli_query($dbcon, $q_count_mouth_of_year_can);
+$total_can = mysqli_fetch_assoc($result_count_mouth_of_year_can);
+
+$q_count_mouth_of_year_opaque = "SELECT COUNT(type_product) as `count` FROM `log_exchange_point` WHERE `type_product` = 'opaque' AND `date_exchange_point` LIKE '%%/%%/$year'";
+$result_count_mouth_of_year_opaque = mysqli_query($dbcon, $q_count_mouth_of_year_opaque);
+$total_opaque = mysqli_fetch_assoc($result_count_mouth_of_year_opaque);
 ?>
+
+
+
 <div class="container pt-4">
     <h1 class="text-center mb-4 alert alert-secondary" style="font-size: 2em; ">Volume contained in the tank</h1>
     <div class="row text-center">
@@ -38,8 +88,6 @@ require './src/models/update_stock.php';
     </div>
     <br>
     <div class="container">
-        <br>
-        <h1 class="text-center mb-4 alert alert-secondary" style="font-size: 2em; ">Graph Of Year <?php echo $year_local ?></h1>
         <div class="row">
             <div class="col-md-7">
                 <div id="container" class="mt-5" style="height: 450px; width: 700px;"></div>
@@ -47,14 +95,14 @@ require './src/models/update_stock.php';
                 <script type="text/javascript">
                     var dom = document.getElementById("container");
                     var myChart = echarts.init(dom);
-                    var app = {};
+                    // var app = {};
                     var option;
                     option = {
-                        title: {
-                            text: 'Clear',
-                            subtext: '<?php echo $year_local ?>',
-                            left: 'center'
-                        },
+                        // title: {
+                        //     text: '<?php #echo $type_show ?>',
+                        //     subtext: '<?php #echo $year ?>',
+                        //     left: 'center'
+                        // },
                         xAxis: {
                             type: 'category',
                             data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -65,9 +113,14 @@ require './src/models/update_stock.php';
                         },
                         series: [{
                             // data: [5, 6, 21, 11, 15, 14, 25],
-                            data: [<?php for ($i = 1; $i <= 12; $i++) {
-                                        echo $mouth_clear[$i] . ',';
-                                    } ?>],
+                            data: [
+                                <?php
+                                // while ($row = mysqli_fetch_array($result_search))
+                                for ($i = 1; $i <= 12; $i++) {
+                                    echo $mouth_clear[$i] . ',';
+                                }
+                                ?>
+                            ],
                             type: 'bar'
                         }]
                     };
@@ -78,21 +131,23 @@ require './src/models/update_stock.php';
                 </script>
             </div>
             <div class="col-md-5 ">
-                <!-- <div class=" float-right">
-                    <label for="Year" class="text">Year : </label>
+                <div class=" float-right">
+                    <label for="Type">Type : </label>
+                    <select id="mySelectType" class="select_type">
+                        <?php while ($q_type = mysqli_fetch_assoc($result_type)) { ?>
+                            <option value=" <?php echo $q_type['name_eng_type_product'] ?>"><?php echo $q_type['name_th_type_product'] ?>
+                            <?php } ?>
+                    </select>
+                    &nbsp;&nbsp;
+                    <label for="Year" class="text ">Year : </label>
                     <select id="mySelectYear" class="select_year">
-                        <?php
-                        #while ($year_show = mysqli_fetch_assoc($result_year)) { 
-                        ?>
-                            <option value=" <?php #echo $year_show['year'] 
-                                            ?>"> <?php #echo $year_show['year'] 
-                                                    ?>
-                            <?php #} 
-                            ?>
+                        <?php while ($q_year = mysqli_fetch_assoc($result_year)) { ?>
+                            <option value=" <?php echo $q_year['year'] ?>"><?php echo $q_year['year'] ?>
+                            <?php } ?>
                     </select>
                     &nbsp;&nbsp;
                     <button type="button" class="btn btn-primary btn_graph" style="font-size: 12px;border-radius: 12px;">Submit</button>
-                </div> -->
+                </div>
                 <div id="container1" class="mt-5" style="height: 450px; width: 400px;"></div>
                 <script type="text/javascript">
                     var dom1 = document.getElementById("container1");
@@ -102,7 +157,7 @@ require './src/models/update_stock.php';
                     option1 = {
                         title: {
                             text: 'Graph of Year',
-                            subtext: '<?php echo $year_local ?>',
+                            subtext: '<?php echo $year ?>',
                             left: 'center'
                         },
                         tooltip: {
@@ -117,18 +172,15 @@ require './src/models/update_stock.php';
                             type: 'pie',
                             radius: '55%',
                             data: [{
-                                    value: <?php echo $total_year_clear
-                                            ?>,
+                                    value: <?php echo $total_clear['count'] ?>,
                                     name: 'Clear'
                                 },
                                 {
-                                    value: <?php echo $total_year_can
-                                            ?>,
+                                    value: <?php echo $total_can['count'] ?>,
                                     name: 'Can'
                                 },
                                 {
-                                    value: <?php echo $total_year_opaque
-                                            ?>,
+                                    value: <?php echo $total_opaque['count'] ?>,
                                     name: 'Opaque'
                                 }
                             ],
@@ -141,80 +193,9 @@ require './src/models/update_stock.php';
                             }
                         }]
                     };
+
                     if (option1 && typeof option1 === 'object') {
                         myChart1.setOption(option1);
-                    }
-                </script>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div id="container2" class="mt-5 " style="height: 450px; width: 630px;"></div>
-                <script type="text/javascript">
-                    var dom = document.getElementById("container2");
-                    var myChart = echarts.init(dom);
-                    var app = {};
-                    var option2;
-                    option2 = {
-                        title: {
-                            text: 'Opaque',
-                            subtext: '<?php echo $year_local ?>',
-                            left: 'center'
-                        },
-                        xAxis: {
-                            type: 'category',
-                            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                        },
-                        yAxis: {
-                            type: 'value',
-                            // data: [10, 20, 30, 40, 50, 60],
-                        },
-                        series: [{
-                            // data: [5, 6, 21, 11, 15, 14, 25],
-                            data: [<?php for ($i = 1; $i <= 12; $i++) {
-                                        echo $mouth_opaque[$i] . ',';
-                                    } ?>],
-                            type: 'bar'
-                        }]
-                    };
-
-                    if (option2 && typeof option2 === 'object') {
-                        myChart.setOption(option2);
-                    }
-                </script>
-            </div>
-            <div class="col-md-6">
-                <div id="container3" class="mt-5" style="height: 450px; width: 630px;"></div>
-                <script type="text/javascript">
-                    var dom3 = document.getElementById("container3");
-                    var myChart = echarts.init(dom3);
-                    var app = {};
-                    var option3;
-                    option3 = {
-                        title: {
-                            text: 'Can',
-                            subtext: '<?php echo $year_local ?>',
-                            left: 'center'
-                        },
-                        xAxis: {
-                            type: 'category',
-                            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                        },
-                        yAxis: {
-                            type: 'value',
-                            // data: [10, 20, 30, 40, 50, 60],
-                        },
-                        series: [{
-                            data: [<?php for ($i = 1; $i <= 12; $i++) {
-                                        echo $mouth_can[$i] . ',';
-                                    } ?>],
-                            type: 'bar'
-                        }]
-                    };
-
-                    if (option3 && typeof option3 === 'object') {
-                        myChart.setOption(option3);
                     }
                 </script>
             </div>

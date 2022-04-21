@@ -595,8 +595,39 @@ $(document).ready(function () {
   });
   $(".btn_graph").click(function () {
     let select_year = $(".select_year").val();
-    let select_type = $(".select_type").val();
-    console.log(select_year);
-    console.log(select_type);
+    // console.log(select_year);
+    $.ajax({
+      type: "POST",
+      url: "./src/models/graph.php",
+      data: {
+        select_year: select_year,
+      },
+      dataType: "json",
+      success: function (remine) {
+        if (remine.status == "success") {
+          $("#modal-graph").modal("show");
+          var total_year_clear1 = remine.total_year_clear1;
+        }
+      },
+    });
+  });
+  $(".date_12").click(function () {
+    let date_1 = $(".date_input").val();
+    console.log(date_1);
+
+    $.ajax({
+      type: "POST",
+      url: "./src/models/history_ex.php",
+      data: {
+        date_1: date_1,
+      },
+      // dataType: "json",
+      // success: function (remine) {
+      //   if (remine.status == "success") {
+      //     $("#modal-graph").modal("show");
+      //     var total_year_clear1 = remine.total_year_clear1;
+      //   }
+      // },
+    });
   });
 });

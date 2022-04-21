@@ -29,6 +29,10 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link btn_setting_menu" href="history.php">History</a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link btn_setting_menu" href="setting.php">Setting</a>
             </li>
         </ul>
