@@ -53,7 +53,7 @@ function search_year($type_search, $year_search1)
 <html lang="en">
 
 <head>
-    <title>History Of Day | Admin</title>
+    <title>Graph Of Year | Admin</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

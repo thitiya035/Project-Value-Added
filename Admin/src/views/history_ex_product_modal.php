@@ -13,10 +13,10 @@ $_day = $_GET['day_ex'] ?? '';
     </div>
     <div class="row">
         <div class="col-12 mb-3">
-            <h1 class="badge " style="font-size: 1.75rem;">History Lists is <?php echo $day_local ?></h1>
+            <h4 class="badge " style="font-size: 1.3rem;">History Lists &nbsp; <?php echo $day_local ?></h4>
             <form action="../Admin/src/models/history_ex.php" class="mt-2 mt-md-1">
                 <div class="float-right">
-                    <label id="date">วันที่</label>
+                    <label id="date">Date</label>
                     <input type="date" name="day" class="date_input" value="<?= $_day ?>">
                     <button class="btn btn-success date_12" type="submit">
                         <i class="fas fa-search"></i>
