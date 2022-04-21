@@ -594,40 +594,33 @@ $(document).ready(function () {
     });
   });
   $(".btn_graph").click(function () {
-    let select_year = $(".select_year").val();
-    // console.log(select_year);
-    $.ajax({
-      type: "POST",
-      url: "./src/models/graph.php",
-      data: {
-        select_year: select_year,
-      },
-      dataType: "json",
-      success: function (remine) {
-        if (remine.status == "success") {
-          $("#modal-graph").modal("show");
-          var total_year_clear1 = remine.total_year_clear1;
-        }
-      },
-    });
-  });
-  $(".date_12").click(function () {
-    let date_1 = $(".date_input").val();
-    console.log(date_1);
+    // http://localhost/Project-Value-Added/Admin/src/models/history_ex.php?day=2022-04-14
 
-    $.ajax({
-      type: "POST",
-      url: "./src/models/history_ex.php",
-      data: {
-        date_1: date_1,
-      },
-      // dataType: "json",
-      // success: function (remine) {
-      //   if (remine.status == "success") {
-      //     $("#modal-graph").modal("show");
-      //     var total_year_clear1 = remine.total_year_clear1;
-      //   }
-      // },
-    });
+    //http://localhost/Project-Value-Added/Admin/src/models/graph.php?select_year=%202020
+    let select_year = $(".select_year").val();
+    // document.getElementById("select_year").action = "./src/models/graph.php";
+    // console.log(select_year);
+    let link_year = "./src/models/graph.php?select_year=" + select_year;
+    // console.log(link_year);
+    location.replace(link_year);
+    // var fileAction = "./src/models/graph.php";
+    // var strAction = fileAction + "?select_year=" + select_year;
+    // document.frmMain.action = strAction;
+    // document.frmMain.submit();
+
+    // $.ajax({
+    //   type: "POST",
+    //   url: "./src/models/graph.php",
+    //   data: {
+    //     select_year: select_year,
+    //   },
+    //   dataType: "json",
+    //   success: function (remine) {
+    //     if (remine.status == "success") {
+    //       $("#modal-graph").modal("show");
+
+    //     }
+    //   },
+    // });
   });
 });

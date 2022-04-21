@@ -1,6 +1,7 @@
 <?php
 require './src/models/update_stock.php';
 // require "./src/views/graph_modal.php";
+// $_year = $_GET['year_chang'] ?? '';
 ?>
 <div class="container pt-4">
     <h1 class="text-center mb-4 alert alert-secondary" style="font-size: 2em; ">Volume contained in the tank</h1>
@@ -78,21 +79,23 @@ require './src/models/update_stock.php';
                 </script>
             </div>
             <div class="col-md-5 ">
-                <!-- <div class=" float-right">
-                    <label for="Year" class="text">Year : </label>
+                <div class=" float-right">
+                    <!-- <form action="../Admin/src/models/graph.php" class="mt-2 mt-md-1"> -->
+                    <label for="Year" class="text">History Of : </label>
                     <select id="mySelectYear" class="select_year">
-                        <?php
-                        #while ($year_show = mysqli_fetch_assoc($result_year)) { 
-                        ?>
-                            <option value=" <?php #echo $year_show['year'] 
-                                            ?>"> <?php #echo $year_show['year'] 
-                                                    ?>
-                            <?php #} 
-                            ?>
+                        <option selected="true" disabled="disabled">&nbsp;Choose Year&nbsp;
+                            <?php
+                            while ($year_show = mysqli_fetch_assoc($result_year)) {
+                                if ($year_show['year'] != $year_local) { ?>
+                        <option id="<?php echo$year_show['year'] ?> " value=" <?php echo$year_show['year']  ?> ">
+                    <?php echo $year_show['year'];
+                                }
+                            }  ?>
                     </select>
                     &nbsp;&nbsp;
-                    <button type="button" class="btn btn-primary btn_graph" style="font-size: 12px;border-radius: 12px;">Submit</button>
-                </div> -->
+                    <button type="submit" class="btn btn-primary btn_graph" style="font-size: 12px;border-radius: 12px;">Submit</button>
+                    <!-- </form> -->
+                </div>
                 <div id="container1" class="mt-5" style="height: 450px; width: 400px;"></div>
                 <script type="text/javascript">
                     var dom1 = document.getElementById("container1");
