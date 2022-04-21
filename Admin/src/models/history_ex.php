@@ -49,8 +49,8 @@
             $search_data = mysqli_query($dbcon, $sql_search);
             $search_data_ex = mysqli_query($dbcon, $sql_search);
             ?>
-            <h4 class="text-left mt-5 pt-4 mt-md-0 pt-md-0 mb-4">
-                ผลการค้นหา
+            <h4 class="text-left ml-4 mt-5 pt-4 mt-md-0 pt-md-0 mb-4">
+                History Lists &nbsp;&nbsp; <?php echo $day.'/'.$mouth.'/'.$year ?>
             </h4>
             <div class="container">
                 <div class="col-12">
@@ -82,7 +82,7 @@
                                     <td> <?php echo $row->name_product ?> </td>
                                     <td> <?php echo $row->type_product ?> </td>
                                     <td> <?php echo $row->point_product ?> </td>
-                                    <td> <?php echo $row->date_exchange_point ."'&nbsp;&nbsp;". $row->time_exchange_point	?> </td>
+                                    <td> <?php echo $row->date_exchange_point ."&nbsp;&nbsp;". $row->time_exchange_point	?> </td>
                                 </tr>
                         <?php   } 
                             } else { ?>
