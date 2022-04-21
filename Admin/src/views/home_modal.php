@@ -1,7 +1,9 @@
+<?php
+require './src/models/update_stock.php';
+// require "./src/views/graph_modal.php";
+// $_year = $_GET['year_chang'] ?? '';
+?>
 <div class="container pt-4">
-    <?php
-    require_once './src/models/update_stock.php';
-    ?>
     <h1 class="text-center mb-4 alert alert-secondary" style="font-size: 2em; ">Volume contained in the tank</h1>
     <div class="row text-center">
         <div class="col-4 mx-auto">
@@ -37,6 +39,8 @@
     </div>
     <br>
     <div class="container">
+        <br>
+        <h1 class="text-center mb-4 alert alert-secondary" style="font-size: 2em; ">Graph Of Year <?php echo $year_local ?></h1>
         <div class="row">
             <div class="col-md-7">
                 <div id="container" class="mt-5" style="height: 450px; width: 700px;"></div>
@@ -48,8 +52,8 @@
                     var option;
                     option = {
                         title: {
-                            text: 'Referer of a Website',
-                            // subtext: 'Fake Data',
+                            text: 'Clear',
+                            subtext: '<?php echo $year_local ?>',
                             left: 'center'
                         },
                         xAxis: {
@@ -62,14 +66,9 @@
                         },
                         series: [{
                             // data: [5, 6, 21, 11, 15, 14, 25],
-                            data: [
-                                <?php
-                                // while ($row = mysqli_fetch_array($result_search))
-                                for ($i = 1; $i <= 12; $i++) {
-                                    echo $mouth_clear[$i] . ',';
-                                }
-                                ?>
-                            ],
+                            data: [<?php for ($i = 1; $i <= 12; $i++) {
+                                        echo $mouth_clear[$i] . ',';
+                                    } ?>],
                             type: 'bar'
                         }]
                     };
@@ -81,21 +80,21 @@
             </div>
             <div class="col-md-5 ">
                 <div class=" float-right">
-                    <label for="Type">Type : </label>
-                    <select id="mySelectType" class="select_type">
-                        <?php while ($q_type = mysqli_fetch_assoc($result_type)) { ?>
-                            <option value=" <?php echo $q_type['name_eng_type_product'] ?>"><?php echo $q_type['name_th_type_product'] ?>
-                            <?php } ?>
-                    </select>
-                    &nbsp;&nbsp;
-                    <label for="Year" class="text ">Year : </label>
+                    <!-- <form action="../Admin/src/models/graph.php" class="mt-2 mt-md-1"> -->
+                    <label for="Year" class="text">History Of : </label>
                     <select id="mySelectYear" class="select_year">
-                        <?php while ($q_year = mysqli_fetch_assoc($result_year)) { ?>
-                            <option value=" <?php echo $q_year['year'] ?>"><?php echo $q_year['year'] ?>
-                            <?php } ?>
+                        <option selected="true" disabled="disabled">&nbsp;Choose Year&nbsp;
+                            <?php
+                            while ($year_show = mysqli_fetch_assoc($result_year)) {
+                                if ($year_show['year'] != $year_local) { ?>
+                        <option id="<?php echo$year_show['year'] ?> " value=" <?php echo$year_show['year']  ?> ">
+                    <?php echo $year_show['year'];
+                                }
+                            }  ?>
                     </select>
                     &nbsp;&nbsp;
-                    <button type="button" class="btn btn-primary btn_graph" style="font-size: 12px;border-radius: 12px;">Submit</button>
+                    <button type="submit" class="btn btn-primary btn_graph" style="font-size: 12px;border-radius: 12px;">Submit</button>
+                    <!-- </form> -->
                 </div>
                 <div id="container1" class="mt-5" style="height: 450px; width: 400px;"></div>
                 <script type="text/javascript">
@@ -105,9 +104,9 @@
                     var option1;
                     option1 = {
                         title: {
-                            text: 'Referer of a Website',
-                            subtext: 'Fake Data',
-                            left: 'left'
+                            text: 'Graph of Year',
+                            subtext: '<?php echo $year_local ?>',
+                            left: 'center'
                         },
                         tooltip: {
                             trigger: 'item'
@@ -119,26 +118,21 @@
                         series: [{
                             name: 'Access From',
                             type: 'pie',
-                            radius: '50%',
+                            radius: '55%',
                             data: [{
-                                    value: 1048,
-                                    name: 'Search Engine'
+                                    value: <?php echo $total_year_clear
+                                            ?>,
+                                    name: 'Clear'
                                 },
                                 {
-                                    value: 735,
-                                    name: 'Direct'
+                                    value: <?php echo $total_year_can
+                                            ?>,
+                                    name: 'Can'
                                 },
                                 {
-                                    value: 580,
-                                    name: 'Email'
-                                },
-                                {
-                                    value: 484,
-                                    name: 'Union Ads'
-                                },
-                                {
-                                    value: 300,
-                                    name: 'Video Ads'
+                                    value: <?php echo $total_year_opaque
+                                            ?>,
+                                    name: 'Opaque'
                                 }
                             ],
                             emphasis: {
@@ -150,50 +144,83 @@
                             }
                         }]
                     };
-
                     if (option1 && typeof option1 === 'object') {
                         myChart1.setOption(option1);
                     }
                 </script>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div id="container2" class="mt-5 " style="height: 450px; width: 630px;"></div>
+                <script type="text/javascript">
+                    var dom = document.getElementById("container2");
+                    var myChart = echarts.init(dom);
+                    var app = {};
+                    var option2;
+                    option2 = {
+                        title: {
+                            text: 'Opaque',
+                            subtext: '<?php echo $year_local ?>',
+                            left: 'center'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        },
+                        yAxis: {
+                            type: 'value',
+                            // data: [10, 20, 30, 40, 50, 60],
+                        },
+                        series: [{
+                            // data: [5, 6, 21, 11, 15, 14, 25],
+                            data: [<?php for ($i = 1; $i <= 12; $i++) {
+                                        echo $mouth_opaque[$i] . ',';
+                                    } ?>],
+                            type: 'bar'
+                        }]
+                    };
+
+                    if (option2 && typeof option2 === 'object') {
+                        myChart.setOption(option2);
+                    }
+                </script>
+            </div>
+            <div class="col-md-6">
+                <div id="container3" class="mt-5" style="height: 450px; width: 630px;"></div>
+                <script type="text/javascript">
+                    var dom3 = document.getElementById("container3");
+                    var myChart = echarts.init(dom3);
+                    var app = {};
+                    var option3;
+                    option3 = {
+                        title: {
+                            text: 'Can',
+                            subtext: '<?php echo $year_local ?>',
+                            left: 'center'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        },
+                        yAxis: {
+                            type: 'value',
+                            // data: [10, 20, 30, 40, 50, 60],
+                        },
+                        series: [{
+                            data: [<?php for ($i = 1; $i <= 12; $i++) {
+                                        echo $mouth_can[$i] . ',';
+                                    } ?>],
+                            type: 'bar'
+                        }]
+                    };
+
+                    if (option3 && typeof option3 === 'object') {
+                        myChart.setOption(option3);
+                    }
+                </script>
+            </div>
+        </div>
     </div>
 </div>
-<!-- <div>
-        <h1 class="text-center mb-4 alert alert-secondary" style="font-size: 2em; ">Point history</h1>
-    </div>
-    <div class="row text-center">
-        <div class="col-4 mx-auto">
-            <div class="card shadow rounded">
-                <div class="card-header bg-secondary">
-                    <strong>TOP POINT</strong>
-                </div>
-                <div class="card-body text-left">
-                    <?php #include './src/views/show_point.php' 
-                    ?>
-                </div>
-            </div>
-        </div>
-        <div class="col-4 mx-auto">
-            <div class="card shadow rounded">
-                <div class="card-header bg-secondary">
-                    <strong>TOP POINT OF TO DAY</strong>
-                </div>
-                <div class="card-body">
-                    <?php #include './src/views/show_point_today.php' 
-                    ?>
-                </div>
-            </div>
-        </div>
-        <div class="col-4 mx-auto">
-            <div class="card shadow rounded">
-                <div class="card-header bg-secondary">
-                    <strong>TOP POINT OF MOUTH</strong>
-                </div>
-                <div class="card-body">
-                    <?php #include './src/views/show_point_mouth.php'  
-                    ?>
-                </div>
-            </div>
-        </div>
-    </div> -->

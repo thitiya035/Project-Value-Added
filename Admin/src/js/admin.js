@@ -594,9 +594,33 @@ $(document).ready(function () {
     });
   });
   $(".btn_graph").click(function () {
+    // http://localhost/Project-Value-Added/Admin/src/models/history_ex.php?day=2022-04-14
+
+    //http://localhost/Project-Value-Added/Admin/src/models/graph.php?select_year=%202020
     let select_year = $(".select_year").val();
-    let select_type = $(".select_type").val();
-    console.log(select_year);
-    console.log(select_type);
+    // document.getElementById("select_year").action = "./src/models/graph.php";
+    // console.log(select_year);
+    let link_year = "./src/models/graph.php?select_year=" + select_year;
+    // console.log(link_year);
+    location.replace(link_year);
+    // var fileAction = "./src/models/graph.php";
+    // var strAction = fileAction + "?select_year=" + select_year;
+    // document.frmMain.action = strAction;
+    // document.frmMain.submit();
+
+    // $.ajax({
+    //   type: "POST",
+    //   url: "./src/models/graph.php",
+    //   data: {
+    //     select_year: select_year,
+    //   },
+    //   dataType: "json",
+    //   success: function (remine) {
+    //     if (remine.status == "success") {
+    //       $("#modal-graph").modal("show");
+
+    //     }
+    //   },
+    // });
   });
 });
